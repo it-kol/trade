@@ -384,9 +384,9 @@
 
     /* ===== BRIEF ===== */
     .brief-bg { background: white; border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle); }
-    .brief-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .brief-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: stretch; }
     @media (max-width: 600px) { .brief-grid { grid-template-columns: 1fr; } }
-    .brief-card { background: var(--primitive-neutral-100); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-card); padding: 20px; transition: border-color 0.15s, box-shadow 0.15s; }
+    .brief-card { background: var(--primitive-neutral-100); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-card); padding: 20px; transition: border-color 0.15s, box-shadow 0.15s; display: flex; flex-direction: column; }
     .brief-card:hover { border-color: var(--color-border-default); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
     .brief-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
     .brief-card-icon { width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
@@ -405,8 +405,7 @@
     .key-info-text strong { color: var(--color-text-primary); }
     /* ===== WORKFLOW ===== */
     .workflow-bg { background: var(--primitive-neutral-100); }
-    #trade-phase-0 .phase-features { grid-template-columns: repeat(4, 1fr); }
-    @media (max-width: 768px) { #trade-phase-0 .phase-features { grid-template-columns: 1fr 1fr; } }
+    /* All phase-features use 4 cols — override for tablet */
     .track-selector { display: flex; gap: 0; margin-bottom: 32px; border-radius: var(--radius-card); overflow: hidden; border: 1px solid var(--color-border-subtle); background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
     .track-btn { flex: 1; padding: 16px 20px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.15s; background: white; border: none; color: var(--color-text-secondary); display: flex; align-items: center; gap: 10px; }
     .track-btn:first-child { border-right: 1px solid var(--color-border-subtle); }
@@ -434,14 +433,16 @@
     .phase-num-ops { background: var(--primitive-pink-50); color: var(--color-action-primary-default); border: 1px solid var(--primitive-pink-200); }
     .phase-title { font-size: 17px; font-weight: 900; color: var(--color-text-primary); margin-bottom: 5px; }
     .phase-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.7; }
-    .phase-features { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 12px; }
-    .feat-card { background: white; border: 1px solid var(--color-border-subtle); border-radius: var(--radius-card); padding: 18px; transition: border-color 0.15s, box-shadow 0.15s; }
+    .phase-features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    @media (max-width: 900px) { .phase-features { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .phase-features { grid-template-columns: 1fr; } }
+    .feat-card { background: white; border: 1px solid var(--color-border-subtle); border-radius: var(--radius-card); padding: 18px; transition: border-color 0.15s, box-shadow 0.15s; display: flex; flex-direction: column; min-height: 200px; }
     .feat-card:hover { border-color: var(--color-border-default); box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
     .feat-card-head { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; }
     .feat-card-icon { font-size: 19px; }
     .feat-card-name { font-size: 14px; font-weight: 700; color: var(--color-text-primary); flex: 1; }
-    .feat-card-body { font-size: 13px; color: var(--color-text-secondary); line-height: 1.7; }
-    .feat-card-tip { margin-top: 10px; padding: 8px 11px; border-radius: var(--radius-button); background: var(--primitive-neutral-100); border-left: 2px solid var(--color-border-default); font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; }
+    .feat-card-body { font-size: 13px; color: var(--color-text-secondary); line-height: 1.7; flex: 1; margin-bottom: 12px; }
+    .feat-card-tip { padding: 8px 11px; border-radius: var(--radius-button); background: var(--primitive-neutral-100); border-left: 2px solid var(--color-border-default); font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; margin-top: auto; flex-shrink: 0; }
     .feat-card-tip strong { color: var(--color-text-primary); }
     .feat-card-tip.tip-trade { background: var(--color-status-processing-bg); border-left-color: var(--color-status-processing-default); }
     .feat-card-tip.tip-trade strong { color: var(--color-status-processing-default); }
@@ -452,7 +453,7 @@
     .guide-bg { background: white; border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle); }
     .guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     @media (max-width: 640px) { .guide-grid { grid-template-columns: 1fr; } }
-    .guide-card { background: var(--primitive-neutral-100); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-card); padding: 20px; }
+    .guide-card { background: var(--primitive-neutral-100); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-card); padding: 20px; display: flex; flex-direction: column; }
     .guide-card-label { font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
     .guide-card-title { font-size: 14px; font-weight: 800; color: var(--color-text-primary); margin-bottom: 12px; }
     .guide-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
@@ -506,7 +507,9 @@
 
     /* ===== CONTACT ===== */
     .contact-bg { background: var(--color-bg-page); }
-    .contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+    .contact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .contact-grid { grid-template-columns: 1fr; } }
 
     /* ===== FOOTER ===== */
     footer { padding: 36px 0 80px; text-align: center; border-top: 1px solid var(--color-border-subtle); background: white; }
@@ -519,12 +522,18 @@
     .footer-links a:hover { color: var(--color-action-primary-default); }
 
     /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .phase-features { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 768px) {
       .nav-links, .nav-cta { display: none; }
       .nav-mobile-btn { display: block; }
       .side-btns { display: none; }
-      .phase-features { grid-template-columns: 1fr; }
+      .phase-features { grid-template-columns: 1fr 1fr; }
       .hero-stats .stat { padding: 0 16px; }
+    }
+    @media (max-width: 480px) {
+      .phase-features { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
       .hero-h1 { font-size: 24px; }
@@ -611,13 +620,14 @@
       <div class="track-chip track-trade">📦 跨境贸易 · 外贸业务员 · 跨境电商卖家</div>
       <div class="track-chip track-ops">🎬 出海运营 · MCN达人运营 · 出海品牌方</div>
     </div>
-    <div class="hero-chips" style="margin-top:10px;flex-wrap:wrap">
+    <div class="hero-chips" style="margin-top:10px;">
       <span class="hero-chip">🌐 全网页双语翻译</span>
       <span class="hero-chip">✉️ 邮件 AI 辅助</span>
       <span class="hero-chip">📄 BabelDOC 文档翻译</span>
       <span class="hero-chip">⚖️ AI 法律专家</span>
       <span class="hero-chip">🎬 视频双语字幕</span>
-      <span class="hero-chip">⌨️ 输入框翻译</span><span class="hero-chip">🎨 自定义 Prompt</span>
+      <span class="hero-chip">⌨️ 输入框翻译</span>
+      <span class="hero-chip">🎨 自定义 Prompt</span>
     </div>
     <div class="hero-stats">
       <div class="stat"><div class="stat-n"><em>2000</em>万+</div><div class="stat-l">全球用户</div></div>
@@ -887,7 +897,8 @@
         <div class="demo-text-wrap">
           <span class="demo-badge demo-badge-trade">📦 跨境贸易线 · 合同/报价单</span>
           <div class="demo-title">BabelDOC<br>合同报价单双语翻译</div>
-          <div class="brief-card-body">看外文合同、报价单、认证文件 PDF 上传至 BabelDOC，自动生成双语对照版本，完整保留原始排版格式。Pro 用户每月 100 张免费额度。AI 法律专家助你写出相对专业的外语法律条款。</div>     <div class="demo-points">
+          <div class="demo-desc">将外文合同、报价单、认证文件 PDF 上传至 BabelDOC，自动生成双语对照版本，完整保留原始排版格式。Pro 用户每月 100 张免费额度。AI 法律专家模式辅助写出相对专业的外语法律条款。</div>
+          <div class="demo-points">
             <div class="demo-point"><div class="demo-point-icon">✓</div><span>上传 PDF，5 分钟内获得双语对照版本</span></div>
             <div class="demo-point"><div class="demo-point-icon">✓</div><span>保留原始表格、排版、图片格式</span></div>
             <div class="demo-point"><div class="demo-point-icon">✓</div><span>AI 法律专家模式辅助写外语法律条款</span></div>
