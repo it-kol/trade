@@ -10,17 +10,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0a0e1a;
-      --bg-panel: #0f1525;
-      --bg-card: #131929;
-      --bg-card2: #0d1420;
-      --border: rgba(0,212,255,0.12);
-      --border-bright: rgba(0,212,255,0.28);
+      --bg: #080c18;
+      --bg-panel: #0d1220;
+      --bg-card: #111827;
+      --bg-card2: #0a0f1c;
+      --border: rgba(0,212,255,0.1);
+      --border-bright: rgba(0,212,255,0.25);
       --text-primary: #e8f4ff;
       --text-secondary: #8ba8c8;
       --text-muted: #4a6a8a;
       --cyan: #00d4ff;
-      --cyan-dim: rgba(0,212,255,0.15);
       --teal: #00b8a0;
       --blue: #3b82f6;
       --indigo: #6366f1;
@@ -28,6 +27,7 @@
       --green: #10b981;
       --red: #ef4444;
       --orange: #f97316;
+      --purple: #a855f7;
       --brand: #00d4ff;
       --radius-sm: 10px;
       --radius: 16px;
@@ -46,48 +46,38 @@
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; }
 
-    /* SCROLLBAR */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: rgba(0,212,255,0.2); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb { background: rgba(0,212,255,0.18); border-radius: 3px; }
 
-    /* GRID BACKGROUND */
+    /* GRID BG */
     body::before {
       content: '';
       position: fixed; inset: 0; pointer-events: none; z-index: 0;
       background-image:
-        linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
+        linear-gradient(rgba(0,212,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.025) 1px, transparent 1px);
+      background-size: 44px 44px;
     }
 
     /* LAYOUT */
-    .inner { max-width: 960px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+    .inner { max-width: 980px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
     section { padding: 72px 0; }
 
     /* NAV */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(10,14,26,0.92); backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      height: 56px; display: flex; align-items: center;
-    }
-    .nav-inner { max-width: 960px; margin: 0 auto; padding: 0 24px; width: 100%; display: flex; align-items: center; gap: 24px; }
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(8,12,24,0.93); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); height: 56px; display: flex; align-items: center; }
+    .nav-inner { max-width: 980px; margin: 0 auto; padding: 0 24px; width: 100%; display: flex; align-items: center; gap: 24px; }
     .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 15px; color: var(--text-primary); }
     .nav-logo img { width: 28px; height: 28px; border-radius: 7px; }
     .nav-sep { font-size: 14px; color: var(--text-muted); margin: 0 2px; }
     .nav-page-name { font-size: 14px; font-weight: 600; color: var(--cyan); }
-    .nav-links { display: flex; gap: 20px; margin-left: auto; }
+    .nav-links { display: flex; gap: 18px; margin-left: auto; }
     .nav-links a { font-size: 13px; color: var(--text-muted); transition: color var(--transition); }
     .nav-links a:hover { color: var(--cyan); }
     .nav-mobile-btn { display: none; margin-left: auto; background: none; border: none; color: var(--text-primary); font-size: 20px; cursor: pointer; }
 
     /* MOBILE NAV */
-    .mobile-nav {
-      display: none; position: fixed; inset: 0; z-index: 200;
-      background: rgba(10,14,26,0.97); backdrop-filter: blur(20px);
-      flex-direction: column; align-items: center; justify-content: center; gap: 24px;
-    }
+    .mobile-nav { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(8,12,24,0.97); backdrop-filter: blur(20px); flex-direction: column; align-items: center; justify-content: center; gap: 22px; }
     .mobile-nav.open { display: flex; }
     .mobile-nav a { font-size: 20px; font-weight: 700; color: var(--text-primary); }
     .mobile-nav-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--text-muted); font-size: 28px; cursor: pointer; }
@@ -97,45 +87,22 @@
     .mob-btn-collab { background: rgba(0,212,255,0.1); color: var(--cyan); border: 1px solid rgba(0,212,255,0.3) !important; }
 
     /* BOTTOM BAR */
-    .bottom-bar {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
-      background: rgba(10,14,26,0.96); backdrop-filter: blur(16px);
-      border-top: 1px solid var(--border);
-      padding: 10px 24px; display: flex; align-items: center; gap: 16px;
-    }
+    .bottom-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 90; background: rgba(8,12,24,0.96); backdrop-filter: blur(16px); border-top: 1px solid var(--border); padding: 10px 24px; display: flex; align-items: center; gap: 16px; }
     .bottom-bar-icon { font-size: 18px; flex-shrink: 0; }
     .bottom-bar-text { font-size: 13px; font-weight: 600; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .bottom-bar-url { font-size: 11px; color: var(--cyan); font-family: 'JetBrains Mono', monospace; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 320px; }
     .bottom-bar-cta { margin-left: auto; flex-shrink: 0; background: linear-gradient(135deg,#00d4ff,#0088cc); color: #000; padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 800; white-space: nowrap; cursor: pointer; border: none; }
 
     /* SIDE BTNS */
-    .side-btns {
-      position: fixed; left: 16px; top: 50%; transform: translateY(-50%);
-      z-index: 80; display: flex; flex-direction: column; gap: 10px;
-    }
-    .side-btn {
-      display: flex; align-items: center; gap: 8px;
-      padding: 9px 14px; border-radius: 12px;
-      background: rgba(13,20,32,0.9); border: 1px solid var(--border);
-      font-size: 15px; cursor: pointer; transition: all var(--transition);
-      color: var(--text-secondary); white-space: nowrap;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-    }
+    .side-btns { position: fixed; left: 16px; top: 50%; transform: translateY(-50%); z-index: 80; display: flex; flex-direction: column; gap: 10px; }
+    .side-btn { display: flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 12px; background: rgba(13,18,32,0.9); border: 1px solid var(--border); font-size: 15px; cursor: pointer; transition: all var(--transition); color: var(--text-secondary); white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,0.5); }
     .side-btn:hover { background: var(--bg-card); border-color: var(--border-bright); color: var(--cyan); }
     .side-btn-label { font-size: 12px; font-weight: 600; }
 
     /* MODAL */
-    .modal-overlay {
-      display: none; position: fixed; inset: 0; z-index: 300;
-      background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
-      align-items: center; justify-content: center;
-    }
+    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.75); backdrop-filter: blur(8px); align-items: center; justify-content: center; }
     .modal-overlay.open { display: flex; }
-    .modal-box {
-      background: var(--bg-card); border: 1px solid var(--border-bright); border-radius: var(--radius-xl);
-      padding: 32px; max-width: 480px; width: 90%; position: relative; max-height: 90vh; overflow-y: auto;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 40px rgba(0,212,255,0.05);
-    }
+    .modal-box { background: var(--bg-card); border: 1px solid var(--border-bright); border-radius: var(--radius-xl); padding: 32px; max-width: 480px; width: 90%; position: relative; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.7); }
     .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--text-muted); font-size: 22px; cursor: pointer; }
     .modal-title { font-size: 20px; font-weight: 800; margin-bottom: 6px; color: var(--text-primary); }
     .modal-sub { font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.7; }
@@ -151,7 +118,7 @@
     /* SHARE MODAL */
     .share-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
     .share-item { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px 8px; border-radius: var(--radius); background: var(--bg-panel); border: 1px solid var(--border); cursor: pointer; transition: all var(--transition); }
-    .share-item:hover { border-color: var(--border-bright); background: var(--bg-card); }
+    .share-item:hover { border-color: var(--border-bright); }
     .share-plat-icon { font-size: 24px; }
     .share-plat-label { font-size: 11px; color: var(--text-muted); }
 
@@ -164,97 +131,70 @@
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
     @keyframes gradShift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
     @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    @keyframes scanline { 0% { top: -10%; } 100% { top: 110%; } }
-    @keyframes glowPulse { 0%,100%{opacity:0.4;} 50%{opacity:0.9;} }
+    @keyframes scanline { 0% { top: -5%; } 100% { top: 105%; } }
+    @keyframes glowPulse { 0%,100%{opacity:0.35;} 50%{opacity:0.8;} }
 
     /* SECTION HEADER */
     .sec-head { text-align: center; margin-bottom: 48px; }
     .sec-label { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); margin-bottom: 12px; font-family: 'JetBrains Mono', monospace; }
     .sec-title { font-size: clamp(24px, 3.5vw, 38px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 14px; color: var(--text-primary); }
-    .sec-desc { font-size: 15px; color: var(--text-secondary); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+    .sec-desc { font-size: 15px; color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.8; }
 
     /* HERO */
     .hero-bg {
       min-height: 100vh; display: flex; align-items: center; justify-content: center;
       text-align: center; padding-top: 80px; position: relative; overflow: hidden;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,212,255,0.08) 0%, transparent 70%),
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,212,255,0.07) 0%, transparent 70%),
                   radial-gradient(ellipse 50% 40% at 80% 80%, rgba(0,184,160,0.05) 0%, transparent 60%),
                   var(--bg);
     }
-    .hero-scanline {
-      position: absolute; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(0,212,255,0.3), transparent);
-      animation: scanline 4s linear infinite; pointer-events: none;
-    }
-    .hero-inner { max-width: 780px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+    .hero-scanline { position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,212,255,0.25), transparent); animation: scanline 5s linear infinite; pointer-events: none; }
+    .hero-inner { max-width: 820px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
     .hero-logo-row { display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 28px; animation: fadeInUp 0.5s ease both; }
     .logo-wrap { position: relative; }
-    .logo-glow { position: absolute; inset: -8px; border-radius: 20px; background: rgba(0,212,255,0.15); filter: blur(12px); animation: glowPulse 3s ease infinite; }
-    .logo-img { width: 64px; height: 64px; border-radius: 16px; position: relative; z-index: 1; border: 1px solid rgba(0,212,255,0.3); }
+    .logo-glow { position: absolute; inset: -8px; border-radius: 20px; background: rgba(0,212,255,0.12); filter: blur(12px); animation: glowPulse 3s ease infinite; }
+    .logo-img { width: 64px; height: 64px; border-radius: 16px; position: relative; z-index: 1; border: 1px solid rgba(0,212,255,0.25); }
     .hero-x { font-size: 28px; color: var(--text-muted); font-weight: 300; }
-    .hero-platform-badge {
-      display: flex; align-items: center; gap: 10px; padding: 10px 18px;
-      border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border);
-      font-size: 15px; font-weight: 700; color: var(--text-primary);
-    }
-    .hero-platform-badge .icon { font-size: 24px; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 6px 16px; border-radius: 100px;
-      background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);
-      font-size: 12px; font-weight: 600; color: var(--cyan);
-      margin-bottom: 24px; animation: fadeInUp 0.5s ease 0.1s both;
-      font-family: 'JetBrains Mono', monospace;
-    }
+    .hero-platform-badge { display: flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border); font-size: 15px; font-weight: 700; color: var(--text-primary); }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; background: rgba(0,212,255,0.07); border: 1px solid rgba(0,212,255,0.18); font-size: 12px; font-weight: 600; color: var(--cyan); margin-bottom: 24px; animation: fadeInUp 0.5s ease 0.1s both; font-family: 'JetBrains Mono', monospace; }
     .pulse-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); animation: pulse 2s infinite; }
-    .hero-h1 {
-      font-size: clamp(28px, 4.5vw, 54px); font-weight: 900; line-height: 1.1; letter-spacing: -0.04em;
-      margin-bottom: 20px; animation: fadeInUp 0.5s ease 0.15s both; color: var(--text-primary);
-    }
-    .grad-cyan {
-      background: linear-gradient(135deg, #00d4ff, #00b8a0, #3b82f6);
-      background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; animation: gradShift 5s ease infinite;
-    }
-    .hero-sub {
-      font-size: 16px; color: var(--text-secondary); line-height: 1.8;
-      margin-bottom: 36px; animation: fadeInUp 0.5s ease 0.2s both; max-width: 600px; margin-left: auto; margin-right: auto;
-    }
+    .hero-h1 { font-size: clamp(28px, 4.5vw, 52px); font-weight: 900; line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 20px; animation: fadeInUp 0.5s ease 0.15s both; color: var(--text-primary); }
+    .grad-cyan { background: linear-gradient(135deg, #00d4ff, #00b8a0, #3b82f6); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradShift 5s ease infinite; }
+    .hero-sub { font-size: 16px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 36px; animation: fadeInUp 0.5s ease 0.2s both; max-width: 640px; margin-left: auto; margin-right: auto; }
     .hero-actions { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; animation: fadeInUp 0.5s ease 0.25s both; margin-bottom: 36px; }
     .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; cursor: pointer; transition: all var(--transition); border: none; }
     .btn-lg { padding: 12px 26px; font-size: 15px; }
     .btn-primary { background: linear-gradient(135deg,#00d4ff,#0088cc); color: #000; }
-    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,212,255,0.3); }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,212,255,0.25); }
     .btn-outline { background: transparent; color: var(--cyan); border: 1px solid rgba(0,212,255,0.35); }
-    .btn-outline:hover { background: rgba(0,212,255,0.08); border-color: var(--cyan); }
-    .btn-ghost { background: rgba(255,255,255,0.05); color: var(--text-secondary); border: 1px solid var(--border); }
-    .btn-ghost:hover { background: rgba(255,255,255,0.08); color: var(--text-primary); }
-    .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; animation: fadeInUp 0.5s ease 0.3s both; }
-    .chip {
-      padding: 5px 12px; border-radius: 100px;
-      background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.15);
-      font-size: 12px; color: var(--text-secondary); font-weight: 500;
-    }
-    .hero-stats { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--border); animation: fadeInUp 0.5s ease 0.35s both; }
+    .btn-outline:hover { background: rgba(0,212,255,0.07); border-color: var(--cyan); }
+    .btn-ghost { background: rgba(255,255,255,0.04); color: var(--text-secondary); border: 1px solid var(--border); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.07); color: var(--text-primary); }
+
+    /* AUDIENCE TRACK CHIPS */
+    .hero-tracks { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; animation: fadeInUp 0.5s ease 0.28s both; margin-bottom: 12px; }
+    .track-chip { display: flex; align-items: center; gap: 7px; padding: 7px 14px; border-radius: 100px; font-size: 12px; font-weight: 700; border: 1px solid; }
+    .track-trade { background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25); color: var(--amber); }
+    .track-ops { background: rgba(0,212,255,0.07); border-color: rgba(0,212,255,0.2); color: var(--cyan); }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; animation: fadeInUp 0.5s ease 0.32s both; }
+    .chip { padding: 4px 11px; border-radius: 100px; background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.12); font-size: 12px; color: var(--text-secondary); font-weight: 500; }
+    .hero-stats { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--border); animation: fadeInUp 0.5s ease 0.36s both; }
     .stat { text-align: center; }
     .stat-n { font-size: 26px; font-weight: 900; color: var(--text-primary); letter-spacing: -0.03em; }
     .stat-n em { color: var(--cyan); font-style: normal; }
     .stat-l { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
     /* MARQUEE */
-    .marquee-wrap { overflow: hidden; padding: 20px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-panel); }
-    .marquee-track { display: flex; gap: 0; width: max-content; animation: marquee 28s linear infinite; }
-    .marquee-item { display: flex; align-items: center; gap: 10px; padding: 0 32px; font-size: 13px; font-weight: 600; color: var(--text-secondary); white-space: nowrap; }
-    .marquee-item .m-icon { font-size: 18px; }
+    .marquee-wrap { overflow: hidden; padding: 18px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-panel); }
+    .marquee-track { display: flex; gap: 0; width: max-content; animation: marquee 30s linear infinite; }
+    .marquee-item { display: flex; align-items: center; gap: 10px; padding: 0 30px; font-size: 13px; font-weight: 600; color: var(--text-secondary); white-space: nowrap; }
+    .marquee-item .m-icon { font-size: 17px; }
 
-    /* BRIEF / PRODUCT SECTION */
+    /* BRIEF */
     .brief-bg { background: var(--bg-panel); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .brief-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .brief-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     @media (max-width: 640px) { .brief-grid { grid-template-columns: 1fr; } }
-    .brief-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 22px; transition: all var(--transition);
-    }
+    .brief-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: border-color var(--transition); }
     .brief-card:hover { border-color: var(--border-bright); }
     .brief-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
     .brief-card-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
@@ -263,74 +203,67 @@
     .brief-card-body { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
     .brief-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
     .brief-tag { padding: 3px 9px; border-radius: 100px; font-size: 11px; font-weight: 600; }
-    .tag-cyan { background: rgba(0,212,255,0.1); color: var(--cyan); border: 1px solid rgba(0,212,255,0.2); }
-    .tag-teal { background: rgba(0,184,160,0.1); color: var(--teal); border: 1px solid rgba(0,184,160,0.2); }
-    .tag-amber { background: rgba(245,158,11,0.1); color: var(--amber); border: 1px solid rgba(245,158,11,0.2); }
-    .tag-green { background: rgba(16,185,129,0.1); color: var(--green); border: 1px solid rgba(16,185,129,0.2); }
-    .tag-blue { background: rgba(59,130,246,0.1); color: var(--blue); border: 1px solid rgba(59,130,246,0.2); }
-    .tag-orange { background: rgba(249,115,22,0.1); color: var(--orange); border: 1px solid rgba(249,115,22,0.2); }
+    .tag-cyan { background: rgba(0,212,255,0.09); color: var(--cyan); border: 1px solid rgba(0,212,255,0.18); }
+    .tag-teal { background: rgba(0,184,160,0.09); color: var(--teal); border: 1px solid rgba(0,184,160,0.18); }
+    .tag-amber { background: rgba(245,158,11,0.09); color: var(--amber); border: 1px solid rgba(245,158,11,0.18); }
+    .tag-green { background: rgba(16,185,129,0.09); color: var(--green); border: 1px solid rgba(16,185,129,0.18); }
+    .tag-blue { background: rgba(59,130,246,0.09); color: var(--blue); border: 1px solid rgba(59,130,246,0.18); }
+    .tag-orange { background: rgba(249,115,22,0.09); color: var(--orange); border: 1px solid rgba(249,115,22,0.18); }
+    .tag-purple { background: rgba(168,85,247,0.09); color: var(--purple); border: 1px solid rgba(168,85,247,0.18); }
 
-    /* WORKFLOW PHASES */
+    /* DUAL TRACK WORKFLOW */
     .workflow-bg { background: var(--bg); }
-    .phase-tabs { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 36px; }
-    .phase-tab {
-      padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 700;
-      background: var(--bg-card); border: 1px solid var(--border);
-      color: var(--text-muted); cursor: pointer; transition: all var(--transition);
-    }
-    .phase-tab.active { background: rgba(0,212,255,0.1); border-color: rgba(0,212,255,0.35); color: var(--cyan); }
+    .track-selector { display: flex; gap: 0; margin-bottom: 40px; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+    .track-btn { flex: 1; padding: 14px 20px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all var(--transition); background: var(--bg-card); border: none; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .track-btn:first-child { border-right: 1px solid var(--border); }
+    .track-btn.active-trade { background: rgba(245,158,11,0.1); color: var(--amber); }
+    .track-btn.active-ops { background: rgba(0,212,255,0.08); color: var(--cyan); }
+    .track-icon { font-size: 20px; }
+    .track-panel { display: none; }
+    .track-panel.active { display: block; }
+
+    /* PHASE TABS */
+    .phase-tabs { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 32px; }
+    .phase-tab { padding: 7px 16px; border-radius: 100px; font-size: 13px; font-weight: 700; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; transition: all var(--transition); }
+    .phase-tab.active-trade { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.3); color: var(--amber); }
+    .phase-tab.active-ops { background: rgba(0,212,255,0.08); border-color: rgba(0,212,255,0.28); color: var(--cyan); }
     .phase-panel { display: none; }
     .phase-panel.active { display: block; }
-    .phase-header {
-      display: flex; align-items: flex-start; gap: 20px; margin-bottom: 28px;
-      padding: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-    }
-    .phase-num {
-      width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px; font-weight: 900; font-family: 'JetBrains Mono', monospace;
-    }
-    .phase-num-1 { background: rgba(0,212,255,0.12); color: var(--cyan); border: 1px solid rgba(0,212,255,0.25); }
-    .phase-num-2 { background: rgba(0,184,160,0.12); color: var(--teal); border: 1px solid rgba(0,184,160,0.25); }
-    .phase-num-3 { background: rgba(245,158,11,0.12); color: var(--amber); border: 1px solid rgba(245,158,11,0.25); }
-    .phase-num-4 { background: rgba(99,102,241,0.12); color: var(--indigo); border: 1px solid rgba(99,102,241,0.25); }
-    .phase-title { font-size: 20px; font-weight: 900; color: var(--text-primary); margin-bottom: 6px; }
-    .phase-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+    /* PHASE HEADER */
+    .phase-header { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 24px; padding: 22px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); }
+    .phase-num { width: 46px; height: 46px; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; font-family: 'JetBrains Mono', monospace; }
+    .phase-num-trade { background: rgba(245,158,11,0.1); color: var(--amber); border: 1px solid rgba(245,158,11,0.22); }
+    .phase-num-ops { background: rgba(0,212,255,0.1); color: var(--cyan); border: 1px solid rgba(0,212,255,0.22); }
+    .phase-title { font-size: 19px; font-weight: 900; color: var(--text-primary); margin-bottom: 6px; }
+    .phase-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
     .phase-features { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
-    .feat-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 18px; transition: border-color var(--transition);
-    }
+    .feat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; transition: border-color var(--transition); }
     .feat-card:hover { border-color: var(--border-bright); }
     .feat-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
     .feat-card-icon { font-size: 20px; }
     .feat-card-name { font-size: 14px; font-weight: 700; color: var(--text-primary); }
-    .feat-card-badge { margin-left: auto; padding: 2px 8px; border-radius: 100px; font-size: 10px; font-weight: 700; }
-    .badge-free { background: rgba(16,185,129,0.12); color: var(--green); border: 1px solid rgba(16,185,129,0.25); }
-    .badge-pro { background: rgba(0,212,255,0.1); color: var(--cyan); border: 1px solid rgba(0,212,255,0.2); }
+    .feat-card-badge { margin-left: auto; padding: 2px 8px; border-radius: 100px; font-size: 10px; font-weight: 700; flex-shrink: 0; }
+    .badge-free { background: rgba(16,185,129,0.1); color: var(--green); border: 1px solid rgba(16,185,129,0.22); }
+    .badge-pro { background: rgba(0,212,255,0.08); color: var(--cyan); border: 1px solid rgba(0,212,255,0.18); }
     .feat-card-body { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
-    .feat-card-tip {
-      margin-top: 10px; padding: 8px 12px; border-radius: 8px;
-      background: rgba(0,212,255,0.05); border-left: 2px solid rgba(0,212,255,0.3);
-      font-size: 12px; color: var(--text-muted); line-height: 1.6;
-    }
+    .feat-card-tip { margin-top: 10px; padding: 8px 12px; border-radius: 8px; background: rgba(0,212,255,0.04); border-left: 2px solid rgba(0,212,255,0.25); font-size: 12px; color: var(--text-muted); line-height: 1.6; }
     .feat-card-tip strong { color: var(--cyan); }
+    .feat-card-tip.tip-amber { background: rgba(245,158,11,0.04); border-left-color: rgba(245,158,11,0.3); }
+    .feat-card-tip.tip-amber strong { color: var(--amber); }
 
-    /* SCRIPT / GUIDE SECTION */
+    /* GUIDE */
     .guide-bg { background: var(--bg-panel); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     @media (max-width: 680px) { .guide-grid { grid-template-columns: 1fr; } }
-    .guide-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 22px;
-    }
+    .guide-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
     .guide-card-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
-    .guide-card-title { font-size: 16px; font-weight: 800; color: var(--text-primary); margin-bottom: 12px; }
+    .guide-card-title { font-size: 15px; font-weight: 800; color: var(--text-primary); margin-bottom: 12px; }
     .guide-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
     .guide-list li { display: flex; gap: 8px; font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
     .guide-list li::before { content: '›'; color: var(--cyan); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-    .guide-must { background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.15); border-radius: var(--radius); padding: 22px; }
-    .guide-must-title { font-size: 13px; font-weight: 800; color: var(--cyan); margin-bottom: 12px; letter-spacing: 0.05em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
+    .guide-must { background: rgba(0,212,255,0.04); border: 1px solid rgba(0,212,255,0.14); border-radius: var(--radius); padding: 22px; }
+    .guide-must-title { font-size: 12px; font-weight: 800; color: var(--cyan); margin-bottom: 12px; letter-spacing: 0.06em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
     .must-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
     .must-item:last-child { border-bottom: none; padding-bottom: 0; }
     .must-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
@@ -341,32 +274,31 @@
     .install-bg { background: var(--bg); }
     .install-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
     .install-tab { padding: 7px 16px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; transition: all var(--transition); }
-    .install-tab.active { background: rgba(0,212,255,0.1); border-color: rgba(0,212,255,0.3); color: var(--cyan); }
+    .install-tab.active { background: rgba(0,212,255,0.08); border-color: rgba(0,212,255,0.28); color: var(--cyan); }
     .install-panel { display: none; }
     .install-panel.active { display: block; }
-    .install-steps { display: flex; flex-direction: column; gap: 14px; }
+    .install-steps { display: flex; flex-direction: column; gap: 12px; }
     .install-step { display: flex; gap: 16px; align-items: flex-start; padding: 18px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); }
-    .install-step-num { width: 28px; height: 28px; border-radius: 8px; background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: var(--cyan); flex-shrink: 0; font-family: 'JetBrains Mono', monospace; }
+    .install-step-num { width: 28px; height: 28px; border-radius: 8px; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.18); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: var(--cyan); flex-shrink: 0; font-family: 'JetBrains Mono', monospace; }
     .install-step-body { flex: 1; }
     .install-step-title { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
     .install-step-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
-    .install-step-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; padding: 5px 12px; border-radius: 8px; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); font-size: 12px; font-weight: 600; color: var(--cyan); }
-    .install-step-link:hover { background: rgba(0,212,255,0.12); }
+    .install-step-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; padding: 5px 12px; border-radius: 8px; background: rgba(0,212,255,0.07); border: 1px solid rgba(0,212,255,0.18); font-size: 12px; font-weight: 600; color: var(--cyan); }
 
     /* COLLAB FLOW */
     .collab-bg { background: var(--bg-panel); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .flow-steps { display: flex; flex-direction: column; gap: 0; }
     .flow-step { display: flex; gap: 20px; }
     .flow-step-left { display: flex; flex-direction: column; align-items: center; width: 48px; flex-shrink: 0; }
-    .flow-step-num { width: 40px; height: 40px; border-radius: 12px; background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.25); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 900; color: var(--cyan); font-family: 'JetBrains Mono', monospace; flex-shrink: 0; }
+    .flow-step-num { width: 40px; height: 40px; border-radius: 12px; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.22); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 900; color: var(--cyan); font-family: 'JetBrains Mono', monospace; flex-shrink: 0; }
     .flow-step-line { width: 1px; flex: 1; background: var(--border); margin: 8px 0; min-height: 20px; }
     .flow-step:last-child .flow-step-line { display: none; }
     .flow-step-right { flex: 1; padding-bottom: 32px; }
     .flow-step-tag { display: inline-block; padding: 3px 10px; border-radius: 100px; font-size: 11px; font-weight: 700; margin-bottom: 8px; }
-    .fst-1 { background: rgba(0,212,255,0.1); color: var(--cyan); border: 1px solid rgba(0,212,255,0.2); }
-    .fst-2 { background: rgba(0,184,160,0.1); color: var(--teal); border: 1px solid rgba(0,184,160,0.2); }
-    .fst-3 { background: rgba(245,158,11,0.1); color: var(--amber); border: 1px solid rgba(245,158,11,0.2); }
-    .fst-4 { background: rgba(16,185,129,0.1); color: var(--green); border: 1px solid rgba(16,185,129,0.2); }
+    .fst-1 { background: rgba(0,212,255,0.08); color: var(--cyan); border: 1px solid rgba(0,212,255,0.18); }
+    .fst-2 { background: rgba(0,184,160,0.08); color: var(--teal); border: 1px solid rgba(0,184,160,0.18); }
+    .fst-3 { background: rgba(245,158,11,0.08); color: var(--amber); border: 1px solid rgba(245,158,11,0.18); }
+    .fst-4 { background: rgba(16,185,129,0.08); color: var(--green); border: 1px solid rgba(16,185,129,0.18); }
     .flow-step-title { font-size: 16px; font-weight: 800; color: var(--text-primary); margin-bottom: 6px; }
     .flow-step-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px; }
     .flow-step-items { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -389,9 +321,10 @@
       .side-btns { display: none; }
       .phase-features { grid-template-columns: 1fr; }
       .hero-stats { gap: 20px; }
+      .track-btn { font-size: 13px; padding: 12px 10px; }
     }
     @media (max-width: 500px) {
-      .hero-h1 { font-size: 28px; }
+      .hero-h1 { font-size: 26px; }
       .hero-logo-row { gap: 12px; }
       .logo-img { width: 48px; height: 48px; }
     }
@@ -447,12 +380,8 @@
 
 <!-- SIDE BTNS -->
 <div class="side-btns">
-  <button class="side-btn" onclick="openModal('shareModal')">
-    <span>🔗</span><span class="side-btn-label">分享</span>
-  </button>
-  <button class="side-btn" onclick="openModal('collabModal')">
-    <span>🤝</span><span class="side-btn-label">我要合作</span>
-  </button>
+  <button class="side-btn" onclick="openModal('shareModal')"><span>🔗</span><span class="side-btn-label">分享</span></button>
+  <button class="side-btn" onclick="openModal('collabModal')"><span>🤝</span><span class="side-btn-label">我要合作</span></button>
 </div>
 
 <!-- ===== HERO ===== -->
@@ -465,41 +394,35 @@
         <img class="logo-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663402005199/AdlZOKmKnlgVUZuk.jpg" alt="沉浸式翻译" />
       </div>
       <span class="hero-x">×</span>
-      <div class="hero-platform-badge">
-        <span class="icon">🌏</span>
-        <span>跨境贸易 / 出海运营类 KOL</span>
-      </div>
+      <div class="hero-platform-badge"><span style="font-size:22px">🌏</span><span>跨境贸易 / 出海运营类 KOL</span></div>
     </div>
-    <div class="hero-badge">
-      <div class="pulse-dot"></div>
-      跨境电商 · 出海品牌 · MCN运营 · 外贸业务员 · 创作者合作参考素材
-    </div>
-    <h1 class="hero-h1">
-      出海人的<span class="grad-cyan">语言效率</span>工具<br>
-      从筛达人到签合同，全流程提速
-    </h1>
-    <p class="hero-sub">
-      全球 2000 万+ 用户在用的 AI 翻译插件——跨境卖家、出海品牌方、MCN 运营每天都在用它筛达人、发建联信、处理合同。基础功能完全免费，Pro 高级功能按月订阅。
-    </p>
+    <div class="hero-badge"><div class="pulse-dot"></div>跨境电商 · 外贸业务员 · 出海品牌 · MCN达人运营 · 创作者合作参考素材</div>
+    <h1 class="hero-h1">出海人的<span class="grad-cyan">语言效率</span>工具<br>外贸谈判、达人合作，全程无障碍</h1>
+    <p class="hero-sub">全球 2000 万+ 用户在用的 AI 翻译插件——跨境电商卖家用它谈供应商、看合同；出海品牌运营用它筛达人、发建联信、处理客服。一个插件，覆盖出海全链路。</p>
     <div class="hero-actions">
       <a href="#workflow" class="btn btn-primary btn-lg">查看工作流场景</a>
       <a href="#guide" class="btn btn-outline btn-lg">获取创作指南</a>
       <a href="https://immersivetranslate.com/zh-Hans/" target="_blank" class="btn btn-ghost btn-lg">🌐 官网 ↗</a>
     </div>
-    <div class="hero-chips">
-      <span class="chip">🔍 筛达人主页翻译</span>
-      <span class="chip">✉️ Gmail AI 建联信</span>
-      <span class="chip">💬 客服工具输入框翻译</span>
-      <span class="chip">📄 BabelDOC 合同翻译</span>
-      <span class="chip">🎬 无字幕视频翻译</span>
+    <div class="hero-tracks">
+      <div class="track-chip track-trade">📦 跨境贸易 · 外贸业务员 · 跨境电商卖家</div>
+      <div class="track-chip track-ops">🎬 出海运营 · MCN达人运营 · 出海品牌方</div>
+    </div>
+    <div class="hero-chips" style="margin-top:10px">
+      <span class="chip">🌐 全网页双语翻译</span>
+      <span class="chip">✉️ 邮件 AI 辅助</span>
+      <span class="chip">📄 BabelDOC 文档翻译</span>
       <span class="chip">⚖️ AI 法律专家</span>
+      <span class="chip">🎬 视频双语字幕</span>
+      <span class="chip">⌨️ 输入框翻译</span>
+      <span class="chip">🎨 自定义 Prompt</span>
     </div>
     <div class="hero-stats">
       <div class="stat"><div class="stat-n"><em>2000</em>万+</div><div class="stat-l">全球用户</div></div>
       <div class="stat"><div class="stat-n"><em>100</em>+</div><div class="stat-l">支持语言</div></div>
       <div class="stat"><div class="stat-n"><em>20</em>+</div><div class="stat-l">AI 翻译引擎</div></div>
       <div class="stat"><div class="stat-n">2024</div><div class="stat-l">Chrome 年度精选</div></div>
-      <div class="stat"><div class="stat-n"><em>4</em> 阶段</div><div class="stat-l">出海工作流覆盖</div></div>
+      <div class="stat"><div class="stat-n"><em>2</em> 条线</div><div class="stat-l">贸易 + 运营全覆盖</div></div>
     </div>
   </div>
 </section>
@@ -507,27 +430,26 @@
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <div class="marquee-item"><span class="m-icon">📺</span> YouTube</div>
-    <div class="marquee-item"><span class="m-icon">🎵</span> TikTok</div>
-    <div class="marquee-item"><span class="m-icon">📸</span> Instagram</div>
-    <div class="marquee-item"><span class="m-icon">✉️</span> Gmail</div>
-    <div class="marquee-item"><span class="m-icon">🎧</span> Zendesk</div>
-    <div class="marquee-item"><span class="m-icon">📄</span> BabelDOC</div>
-    <div class="marquee-item"><span class="m-icon">🌐</span> 全网页翻译</div>
-    <div class="marquee-item"><span class="m-icon">🎬</span> 视频双语字幕</div>
+    <div class="marquee-item"><span class="m-icon">📦</span> 跨境电商</div>
+    <div class="marquee-item"><span class="m-icon">🤝</span> 供应商谈判</div>
+    <div class="marquee-item"><span class="m-icon">📄</span> 合同翻译</div>
     <div class="marquee-item"><span class="m-icon">⚖️</span> AI 法律专家</div>
-    <div class="marquee-item"><span class="m-icon">🔤</span> 输入框翻译</div>
-    <!-- duplicate for seamless loop -->
-    <div class="marquee-item"><span class="m-icon">📺</span> YouTube</div>
-    <div class="marquee-item"><span class="m-icon">🎵</span> TikTok</div>
-    <div class="marquee-item"><span class="m-icon">📸</span> Instagram</div>
-    <div class="marquee-item"><span class="m-icon">✉️</span> Gmail</div>
-    <div class="marquee-item"><span class="m-icon">🎧</span> Zendesk</div>
-    <div class="marquee-item"><span class="m-icon">📄</span> BabelDOC</div>
-    <div class="marquee-item"><span class="m-icon">🌐</span> 全网页翻译</div>
-    <div class="marquee-item"><span class="m-icon">🎬</span> 视频双语字幕</div>
+    <div class="marquee-item"><span class="m-icon">✉️</span> 外贸邮件</div>
+    <div class="marquee-item"><span class="m-icon">🎵</span> TikTok 达人</div>
+    <div class="marquee-item"><span class="m-icon">📺</span> YouTube 达人</div>
+    <div class="marquee-item"><span class="m-icon">🎧</span> 客服工具翻译</div>
+    <div class="marquee-item"><span class="m-icon">📋</span> 报价单翻译</div>
+    <div class="marquee-item"><span class="m-icon">🌐</span> 全网页双语</div>
+    <div class="marquee-item"><span class="m-icon">📦</span> 跨境电商</div>
+    <div class="marquee-item"><span class="m-icon">🤝</span> 供应商谈判</div>
+    <div class="marquee-item"><span class="m-icon">📄</span> 合同翻译</div>
     <div class="marquee-item"><span class="m-icon">⚖️</span> AI 法律专家</div>
-    <div class="marquee-item"><span class="m-icon">🔤</span> 输入框翻译</div>
+    <div class="marquee-item"><span class="m-icon">✉️</span> 外贸邮件</div>
+    <div class="marquee-item"><span class="m-icon">🎵</span> TikTok 达人</div>
+    <div class="marquee-item"><span class="m-icon">📺</span> YouTube 达人</div>
+    <div class="marquee-item"><span class="m-icon">🎧</span> 客服工具翻译</div>
+    <div class="marquee-item"><span class="m-icon">📋</span> 报价单翻译</div>
+    <div class="marquee-item"><span class="m-icon">🌐</span> 全网页双语</div>
   </div>
 </div>
 
@@ -542,15 +464,10 @@
     <div class="brief-grid reveal">
       <div class="brief-card">
         <div class="brief-card-head">
-          <div class="brief-card-icon" style="background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.2)">🌐</div>
-          <div>
-            <div class="brief-card-title">核心定位</div>
-            <div class="brief-card-sub">AI 双语翻译插件</div>
-          </div>
+          <div class="brief-card-icon" style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.18)">🌐</div>
+          <div><div class="brief-card-title">核心定位</div><div class="brief-card-sub">AI 双语翻译插件</div></div>
         </div>
-        <div class="brief-card-body">
-          安装后即可翻译任何网页、PDF、视频字幕、输入框内容。支持 Chrome / Edge / Safari / Firefox，手机端同样可用。
-        </div>
+        <div class="brief-card-body">安装后即可翻译任何网页、PDF、视频字幕、输入框内容。支持 Chrome / Edge / Safari / Firefox，手机端同样可用。</div>
         <div class="brief-card-tags">
           <span class="brief-tag tag-cyan">浏览器插件</span>
           <span class="brief-tag tag-teal">双语对照</span>
@@ -559,15 +476,10 @@
       </div>
       <div class="brief-card">
         <div class="brief-card-head">
-          <div class="brief-card-icon" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2)">💰</div>
-          <div>
-            <div class="brief-card-title">定价与免费额度</div>
-            <div class="brief-card-sub">免费用，Pro 解锁高级功能</div>
-          </div>
+          <div class="brief-card-icon" style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.18)">💰</div>
+          <div><div class="brief-card-title">定价与免费额度</div><div class="brief-card-sub">免费用，Pro 解锁高级功能</div></div>
         </div>
-        <div class="brief-card-body">
-          基础网页/视频翻译完全免费。Pro 会员解锁 AI 专家、自定义 Prompt、BabelDOC（<strong style="color:var(--green)">每月 100 张免费</strong>）等高级功能。
-        </div>
+        <div class="brief-card-body">基础网页/视频翻译完全免费。Pro 会员解锁 AI 专家、自定义 Prompt、BabelDOC（<strong style="color:var(--green)">每月 100 张免费</strong>）等高级功能。</div>
         <div class="brief-card-tags">
           <span class="brief-tag tag-green">基础功能免费</span>
           <span class="brief-tag tag-cyan">BabelDOC 100张/月</span>
@@ -576,306 +488,370 @@
       </div>
       <div class="brief-card">
         <div class="brief-card-head">
-          <div class="brief-card-icon" style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2)">🏆</div>
-          <div>
-            <div class="brief-card-title">产品荣誉</div>
-            <div class="brief-card-sub">行业认可</div>
-          </div>
+          <div class="brief-card-icon" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.18)">📦</div>
+          <div><div class="brief-card-title">跨境贸易场景</div><div class="brief-card-sub">外贸业务员 · 跨境电商卖家</div></div>
         </div>
-        <div class="brief-card-body">
-          2024 年 Chrome 年度精选扩展，全球 2000 万+ 用户，Chrome 商店 4.8 分，连续多年保持翻译类插件第一名。
-        </div>
+        <div class="brief-card-body">看外文采购平台、翻译供应商邮件、处理合同报价单、用 AI 法律专家识别风险条款——外贸全流程语言障碍一键消除。</div>
         <div class="brief-card-tags">
-          <span class="brief-tag tag-amber">Chrome 年度精选</span>
-          <span class="brief-tag tag-cyan">4.8 分</span>
-          <span class="brief-tag tag-blue">2000万+ 用户</span>
+          <span class="brief-tag tag-amber">外贸邮件</span>
+          <span class="brief-tag tag-orange">合同翻译</span>
+          <span class="brief-tag tag-purple">AI 法律专家</span>
+          <span class="brief-tag tag-green">报价单</span>
         </div>
       </div>
       <div class="brief-card">
         <div class="brief-card-head">
-          <div class="brief-card-icon" style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2)">🎯</div>
-          <div>
-            <div class="brief-card-title">目标受众契合度</div>
-            <div class="brief-card-sub">跨境从业者天然用户</div>
-          </div>
+          <div class="brief-card-icon" style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.18)">🎬</div>
+          <div><div class="brief-card-title">出海运营场景</div><div class="brief-card-sub">MCN达人运营 · 出海品牌方</div></div>
         </div>
-        <div class="brief-card-body">
-          跨境电商卖家、出海品牌方、MCN/达人运营、外贸业务员——每天都要处理多语言内容，沉浸式翻译是他们的刚需工具。
-        </div>
+        <div class="brief-card-body">筛选海外达人主页、翻译评论区、发建联信、处理客服工单——达人运营全链路语言效率工具，每天都在用。</div>
         <div class="brief-card-tags">
-          <span class="brief-tag tag-blue">跨境电商</span>
-          <span class="brief-tag tag-teal">出海品牌</span>
-          <span class="brief-tag tag-orange">MCN 运营</span>
-          <span class="brief-tag tag-cyan">外贸业务员</span>
+          <span class="brief-tag tag-cyan">达人筛选</span>
+          <span class="brief-tag tag-teal">建联信</span>
+          <span class="brief-tag tag-blue">客服翻译</span>
+          <span class="brief-tag tag-cyan">视频字幕</span>
         </div>
       </div>
     </div>
 
     <!-- 核心信息 -->
-    <div class="reveal" style="margin-top:28px;padding:24px;background:var(--bg-card);border:1px solid rgba(0,212,255,0.2);border-radius:var(--radius);border-left:3px solid var(--cyan)">
-      <div style="font-size:11px;font-weight:800;color:var(--cyan);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;font-family:'JetBrains Mono',monospace">// 希望粉丝记住的核心信息</div>
+    <div class="reveal" style="margin-top:24px;padding:24px;background:var(--bg-card);border:1px solid rgba(0,212,255,0.18);border-radius:var(--radius);border-left:3px solid var(--cyan)">
+      <div style="font-size:11px;font-weight:800;color:var(--cyan);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;font-family:'JetBrains Mono',monospace">// 希望粉丝记住的核心信息</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px">
         <div style="display:flex;gap:10px;align-items:flex-start">
           <span style="color:var(--cyan);font-size:18px;flex-shrink:0">①</span>
-          <div style="font-size:13px;color:var(--text-secondary);line-height:1.6"><strong style="color:var(--text-primary)">基础功能免费</strong>，装了就能用，不需要注册或付费</div>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.6"><strong style="color:var(--text-primary)">基础功能完全免费</strong>，装了就能用，不需要注册或付费</div>
         </div>
         <div style="display:flex;gap:10px;align-items:flex-start">
-          <span style="color:var(--teal);font-size:18px;flex-shrink:0">②</span>
-          <div style="font-size:13px;color:var(--text-secondary);line-height:1.6"><strong style="color:var(--text-primary)">覆盖出海全流程</strong>，从找达人到签合同，一个插件搞定</div>
+          <span style="color:var(--amber);font-size:18px;flex-shrink:0">②</span>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.6"><strong style="color:var(--text-primary)">跨境贸易全流程覆盖</strong>，从看采购平台到签合同，语言不再是障碍</div>
         </div>
         <div style="display:flex;gap:10px;align-items:flex-start">
-          <span style="color:var(--amber);font-size:18px;flex-shrink:0">③</span>
-          <div style="font-size:13px;color:var(--text-secondary);line-height:1.6"><strong style="color:var(--text-primary)">BabelDOC 每月 100 张免费</strong>，合同/报价单/脚本 PDF 双语翻译</div>
+          <span style="color:var(--teal);font-size:18px;flex-shrink:0">③</span>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.6"><strong style="color:var(--text-primary)">BabelDOC 每月 100 张免费</strong>，合同/报价单/脚本 PDF 双语翻译，保留原始排版</div>
         </div>
         <div style="display:flex;gap:10px;align-items:flex-start">
-          <span style="color:var(--indigo);font-size:18px;flex-shrink:0">④</span>
-          <div style="font-size:13px;color:var(--text-secondary);line-height:1.6"><strong style="color:var(--text-primary)">AI 专家功能</strong>，「法律专家」帮你看合同条款，不懂法律也能识别风险</div>
+          <span style="color:var(--purple);font-size:18px;flex-shrink:0">④</span>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.6"><strong style="color:var(--text-primary)">AI 法律专家</strong>，帮你识别合同风险条款，不懂法律也能看出问题</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== WORKFLOW PHASES ===== -->
+<!-- ===== DUAL TRACK WORKFLOW ===== -->
 <section class="workflow-bg" id="workflow">
   <div class="inner">
     <div class="sec-head reveal">
       <div class="sec-label">// Workflow Scenarios</div>
-      <h2 class="sec-title">出海工作流 · 四阶段场景</h2>
-      <p class="sec-desc">从筛达人到处理文件，沉浸式翻译覆盖跨境从业者的完整工作流，每个阶段都有具体功能对应。</p>
+      <h2 class="sec-title">两条工作流，分别展示</h2>
+      <p class="sec-desc">跨境贸易（外贸/电商）和出海运营（达人/客服）是两类不同的受众，选择你更熟悉的那条线展示给粉丝。</p>
     </div>
 
-    <div class="phase-tabs reveal">
-      <button class="phase-tab active" onclick="switchPhase(0)">阶段一：筛达人</button>
-      <button class="phase-tab" onclick="switchPhase(1)">阶段二：发建联信</button>
-      <button class="phase-tab" onclick="switchPhase(2)">阶段三：客服/售后</button>
-      <button class="phase-tab" onclick="switchPhase(3)">阶段四：处理文件</button>
+    <!-- TRACK SELECTOR -->
+    <div class="track-selector reveal" id="trackSelector">
+      <button class="track-btn active-trade" id="tradeBtnMain" onclick="switchTrack('trade')">
+        <span class="track-icon">📦</span>
+        <div style="text-align:left">
+          <div style="font-size:14px;font-weight:800">跨境贸易线</div>
+          <div style="font-size:11px;font-weight:500;opacity:0.75;margin-top:2px">外贸业务员 · 跨境电商卖家 · 采购</div>
+        </div>
+      </button>
+      <button class="track-btn" id="opsBtnMain" onclick="switchTrack('ops')">
+        <span class="track-icon">🎬</span>
+        <div style="text-align:left">
+          <div style="font-size:14px;font-weight:800">出海运营线</div>
+          <div style="font-size:11px;font-weight:500;opacity:0.75;margin-top:2px">MCN达人运营 · 出海品牌方 · 客服</div>
+        </div>
+      </button>
     </div>
 
-    <!-- Phase 1: 筛达人 -->
-    <div class="phase-panel active" id="phase-0">
-      <div class="phase-header reveal">
-        <div class="phase-num phase-num-1">01</div>
-        <div>
-          <div class="phase-title">🔍 筛达人</div>
-          <div class="phase-desc">在 YouTube、TikTok、Instagram 等平台筛选海外达人时，需要快速读懂达人主页、评论区、视频简介。沉浸式翻译让你不懂英语/日语/韩语也能高效筛选合适的达人。</div>
-        </div>
+    <!-- ===== TRADE TRACK ===== -->
+    <div class="track-panel active" id="track-trade">
+      <div style="margin-bottom:24px;padding:14px 18px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.18);border-radius:var(--radius);font-size:13px;color:var(--text-secondary);line-height:1.7">
+        📦 <strong style="color:var(--amber)">跨境贸易线</strong>：适合外贸业务员、跨境电商卖家、采购人员。核心痛点是语言障碍导致的沟通效率低、合同看不懂、谈判吃亏。
       </div>
-      <div class="phase-features reveal">
-        <div class="feat-card">
-          <div class="feat-card-head">
-            <span class="feat-card-icon">📺</span>
-            <span class="feat-card-name">YouTube 达人主页翻译</span>
-            <span class="feat-card-badge badge-free">免费</span>
-          </div>
-          <div class="feat-card-body">
-            打开 YouTube 达人频道页，一键翻译频道简介、视频标题、评论区内容。快速判断达人风格、受众画像、内容方向是否与品牌契合。
-          </div>
-          <div class="feat-card-tip">💡 <strong>操作提示：</strong>打开达人频道页 → 点击插件图标或快捷键 → 页面即刻双语对照显示</div>
-        </div>
-        <div class="feat-card">
-          <div class="feat-card-head">
-            <span class="feat-card-icon">🎬</span>
-            <span class="feat-card-name">无字幕视频翻译</span>
-            <span class="feat-card-badge badge-pro">Pro</span>
-          </div>
-          <div class="feat-card-body">
-            针对没有字幕的 YouTube 视频，沉浸式翻译可自动识别语音并生成双语字幕，让你看懂达人的真实内容风格和表达方式，评估合作价值。
-          </div>
-          <div class="feat-card-tip">💡 <strong>场景：</strong>评估海外达人的视频内容质量，无需懂外语也能判断内容调性</div>
-        </div>
-        <div class="feat-card">
-          <div class="feat-card-head">
-            <span class="feat-card-icon">🎵</span>
-            <span class="feat-card-name">TikTok / Instagram 主页翻译</span>
-            <span class="feat-card-badge badge-free">免费</span>
-          </div>
-          <div class="feat-card-body">
-            翻译 TikTok 达人主页简介、评论区互动内容、Instagram 帖子文案。快速了解达人的受众语言偏好和内容风格，提升筛选效率。
-          </div>
-          <div class="feat-card-tip">💡 <strong>场景：</strong>筛选 TikTok Shop 达人时，快速读懂达人主页和粉丝评论</div>
-        </div>
-        <div class="feat-card">
-          <div class="feat-card-head">
-            <span class="feat-card-icon">💬</span>
-            <span class="feat-card-name">评论区双语对照</span>
-            <span class="feat-card-badge badge-free">免费</span>
-          </div>
-          <div class="feat-card-body">
-            翻译达人视频的评论区，了解粉丝真实反馈、互动质量、受众画像。帮助判断达人粉丝是否为目标客群，避免踩坑假粉/低质达人。
-          </div>
-          <div class="feat-card-tip">💡 <strong>场景：</strong>通过评论区翻译判断达人粉丝活跃度和真实性</div>
-        </div>
+      <div class="phase-tabs" id="tradePhaseTabs">
+        <button class="phase-tab active-trade" onclick="switchPhase('trade',0)">① 看采购平台 & 找供应商</button>
+        <button class="phase-tab" onclick="switchPhase('trade',1)">② 外贸邮件往来</button>
+        <button class="phase-tab" onclick="switchPhase('trade',2)">③ 合同 & 文件处理</button>
+        <button class="phase-tab" onclick="switchPhase('trade',3)">④ 客服 & 售后</button>
       </div>
-    </div>
 
-    <!-- Phase 2: 发建联信 -->
-    <div class="phase-panel" id="phase-1">
-      <div class="phase-header reveal">
-        <div class="phase-num phase-num-2">02</div>
-        <div>
-          <div class="phase-title">✉️ 发建联信</div>
-          <div class="phase-desc">向海外达人发送合作邀请邮件（建联信）是出海运营的核心环节。沉浸式翻译的 Gmail AI Reply 和输入框翻译功能，让你用母语写作，AI 自动翻译成地道的外语表达。</div>
+      <!-- Trade Phase 1 -->
+      <div class="phase-panel active" id="trade-phase-0">
+        <div class="phase-header reveal">
+          <div class="phase-num phase-num-trade">01</div>
+          <div>
+            <div class="phase-title">🔍 看采购平台 & 找供应商</div>
+            <div class="phase-desc">在 Alibaba、Made-in-China、Global Sources 等采购平台上，大量产品描述、供应商介绍、买家评价都是英文或多语言。沉浸式翻译让你无需切换工具，直接在平台上双语对照阅读。</div>
+          </div>
+        </div>
+        <div class="phase-features reveal">
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">🛒</span><span class="feat-card-name">采购平台全页翻译</span><span class="feat-card-badge badge-free">免费</span></div>
+            <div class="feat-card-body">打开 Alibaba、Made-in-China、Global Sources 等平台，一键开启双语对照，产品描述、规格参数、供应商资质全部中英对照显示，快速筛选合适供应商。</div>
+            <div class="feat-card-tip tip-amber">💡 <strong>场景：</strong>在 Alibaba 上找供应商时，直接翻译产品详情页，无需复制粘贴到翻译工具</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">⭐</span><span class="feat-card-name">买家评价翻译</span><span class="feat-card-badge badge-free">免费</span></div>
+            <div class="feat-card-body">翻译平台上的外语买家评价，了解供应商的真实口碑、产品质量问题、发货速度等关键信息，避免踩坑。</div>
+            <div class="feat-card-tip tip-amber">💡 <strong>场景：</strong>在下单前翻译买家差评，了解供应商的常见问题和风险点</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">🌐</span><span class="feat-card-name">竞品/行业资讯翻译</span><span class="feat-card-badge badge-free">免费</span></div>
+            <div class="feat-card-body">翻译海外行业媒体、竞品官网、市场报告，了解目标市场的最新动态、竞品定价策略、行业趋势，辅助选品和定价决策。</div>
+            <div class="feat-card-tip tip-amber">💡 <strong>场景：</strong>翻译 Amazon 竞品 listing，分析竞品卖点和用户痛点</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">📊</span><span class="feat-card-name">海关/认证文件翻译</span><span class="feat-card-badge badge-pro">Pro</span></div>
+            <div class="feat-card-body">用 BabelDOC 翻译供应商提供的海关编码文件、产品认证报告（CE、FCC、RoHS 等），快速核实产品合规性，避免清关风险。</div>
+            <div class="feat-card-tip tip-amber">💡 <strong>场景：</strong>收到供应商的 CE 认证报告，上传 BabelDOC 生成双语对照版本核查</div>
+          </div>
         </div>
       </div>
-      <div class="phase-features reveal">
-        <div class="feat-card">
-          <div class="feat-card-head">
-            <span class="feat-card-icon">✉️</span>
-            <span class="feat-card-name">Gmail AI Reply</span>
-            <span class="feat-card-badge badge-pro">Pro</span>
-          </div>
-          <div class="feat-card-body">
-            在 Gmail 中直接使用 AI 辅助回复。用中文描述你想表达的意思，AI 自动生成地道的英文/日文/韩文邮件，支持一键插入草稿。
-          </div>
-          <div class="feat-card-tip">💡 <strong>操作：</strong>打开 Gmail 写信界面 → 点击沉浸式翻译 AI 图标 → 输入中文意图 → 生成外语邮件</div>
-        </div>
-        <div class="feat-card">
-          <div class="feat-card-head">
-            <span class="feat-card-icon">🔄</span>
-            <span class="feat-card-name">双语对照确认语气</span>
-            <span class="feat-card-badge badge-free">免费</span>
-          </div>
-          <div class="feat-card-body">
-            发送前，将外语邮件内容粘贴到网页，开启双语对照模式，逐句确认翻译是否准确、语气是否合适，避免因语气不当导致建联失败。
-          </div>
-          <div class="feat-card-tip">💡 <strong>场景：</strong>发送前双语核对，确保邮件语气专业友好，不显得生硬或过于正式</div>
-        </div>
-        <div class="feat-card">
-          <div class="feat-card-head">
-            <span class="feat-card-icon">🎨</span>
-            <span class="feat-card-name">自定义 Prompt（美式口语）</span>
-            <span class="feat-card-badge badge-pro">Pro</span>
-          </div>
-          <div class="feat-card-body">
-            Pro 用户可设置自定义翻译 Prompt，例如「翻译成美式口语风格，语气友好轻松」，让建联信更贴近海外达人的沟通习惯，提升回复率。
-          </div>
-          <div class="feat-card-tip">💡 <strong>示例 Prompt：</strong>「请将以下内容翻译成美式英语，语气轻松友好，像朋友之间的商业沟通」</div>
-        </div>
-        <div class="feat-card">
-          <div class="feat-card-head">
-            <span class="feat-card-icon">⌨️</span>
-            <span class="feat-card-name">输入框三击空格翻译</span>
-            <span class="feat-card-badge badge-free">免费</span>
-          </div>
-          <div class="feat-card-body">
-            在任何网页输入框中，输入中文内容后连击三次空格，即可自动翻译成目标语言。适用于 Gmail、LinkedIn、各类 CRM 系统的邮件撰写。
-          </div>
-          <div class="feat-card-tip">💡 <strong>操作：</strong>输入框中写中文 → 连按三次空格 → 自动翻译为外语，无需切换工具</div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Phase 3: 客服/售后 -->
-    <div class="phase-panel" id="phase-2">
-      <div class="phase-header reveal">
-        <div class="phase-num phase-num-3">03</div>
-        <div>
-          <div class="phase-title">🎧 客服 / 售后</div>
-          <div class="phase-desc">处理海外客户的售后咨询、投诉、退款请求时，需要快速读懂外语内容并给出专业回复。沉浸式翻译支持 Zendesk、Gorgias 等主流客服工具的输入框翻译，大幅提升客服效率。</div>
+      <!-- Trade Phase 2 -->
+      <div class="phase-panel" id="trade-phase-1">
+        <div class="phase-header reveal">
+          <div class="phase-num phase-num-trade">02</div>
+          <div>
+            <div class="phase-title">✉️ 外贸邮件往来</div>
+            <div class="phase-desc">与海外供应商、买家、合作方的邮件沟通是外贸的核心环节。沉浸式翻译让你用中文写邮件、AI 翻译成地道外语，同时快速读懂对方来信，大幅提升邮件往来效率。</div>
+          </div>
+        </div>
+        <div class="phase-features reveal">
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">✉️</span><span class="feat-card-name">Gmail AI Reply 辅助写信</span><span class="feat-card-badge badge-pro">Pro</span></div>
+            <div class="feat-card-body">在 Gmail 中用中文描述邮件意图，AI 自动生成地道的英文/日文/韩文外贸邮件。询价、催单、投诉、谈判——各类外贸场景均适用。</div>
+            <div class="feat-card-tip tip-amber">💡 <strong>操作：</strong>打开 Gmail 写信 → 点击沉浸式翻译 AI 图标 → 输入中文意图 → 生成专业外贸邮件</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">⌨️</span><span class="feat-card-name">输入框三击空格翻译</span><span class="feat-card-badge badge-free">免费</span></div>
+            <div class="feat-card-body">在任何网页输入框中输入中文后连击三次空格，自动翻译成目标语言。适用于 Gmail、Alibaba 站内信、各类 B2B 平台的询盘回复。</div>
+            <div class="feat-card-tip tip-amber">💡 <strong>操作：</strong>输入框写中文 → 连按三次空格 → 自动翻译为外语，无需切换工具</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">🔄</span><span class="feat-card-name">来信双语对照阅读</span><span class="feat-card-badge badge-free">免费</span></div>
+            <div class="feat-card-body">收到外语邮件时，一键开启双语对照，原文与译文并排显示，快速理解对方意图，不遗漏任何细节。支持所有语言的来信翻译。</div>
+            <div class="feat-card-tip tip-amber">💡 <strong>场景：</strong>收到英文询盘邮件，双语对照阅读，快速判断买家需求和诚意</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">🎨</span><span class="feat-card-name">自定义外贸 Prompt</span><span class="feat-card-badge badge-pro">Pro</span></div>
+            <div class="feat-card-body">设置专属外贸邮件 Prompt，如「翻译成专业外贸英语，语气正式但友好，符合 B2B 商务沟通规范」，确保每封邮件都符合外贸行业表达习惯。</div>
+            <div class="feat-card-tip tip-amber">💡 <strong>示例 Prompt：</strong>「请翻译成专业外贸英语，语气正式友好，适合与海外买家的商务沟通」</div>
+          </div>
         </div>
       </div>
-      <div class="phase-features reveal">
-        <div class="feat-card">
-          <div class="feat-card-head">
-            <span class="feat-card-icon">🎧</span>
-            <span class="feat-card-name">Zendesk 输入框翻译</span>
-            <span class="feat-card-badge badge-free">免费</span>
+
+      <!-- Trade Phase 3 -->
+      <div class="phase-panel" id="trade-phase-2">
+        <div class="phase-header reveal">
+          <div class="phase-num phase-num-trade">03</div>
+          <div>
+            <div class="phase-title">📄 合同 & 文件处理</div>
+            <div class="phase-desc">外贸合同、报价单、装箱单、提单、信用证——这些文件往往是英文或多语言，且涉及金额和法律责任。BabelDOC 和 AI 法律专家让你快速读懂每一份文件，不再因语言问题吃亏。</div>
           </div>
-          <div class="feat-card-body">
-            在 Zendesk 客服工单系统中，直接翻译客户来信，并在回复输入框中使用三击空格翻译功能，用中文写好回复后自动翻译成外语发送。
-          </div>
-          <div class="feat-card-tip">💡 <strong>场景：</strong>客服同学不需要懂英语，用中文写回复，自动翻译成专业外语客服用语</div>
         </div>
-        <div class="feat-card">
-          <div class="feat-card-head">
-            <span class="feat-card-icon">💬</span>
-            <span class="feat-card-name">Gorgias / Freshdesk 兼容</span>
-            <span class="feat-card-badge badge-free">免费</span>
+        <div class="phase-features reveal">
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">📄</span><span class="feat-card-name">BabelDOC 合同双语翻译</span><span class="feat-card-badge badge-pro">Pro</span></div>
+            <div class="feat-card-body">上传外文合同 PDF，BabelDOC 自动生成双语对照版本，保留原始排版格式。Pro 用户每月 <strong style="color:var(--green)">100 张免费额度</strong>，超出后按量计费。</div>
+            <div class="feat-card-tip tip-amber">💡 <strong>场景：</strong>收到英文采购合同，上传后 5 分钟内获得中英双语对照版本，逐条核对</div>
           </div>
-          <div class="feat-card-body">
-            沉浸式翻译支持所有网页端客服工具的输入框翻译，包括 Gorgias、Freshdesk、Intercom 等，覆盖跨境电商主流客服平台。
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">⚖️</span><span class="feat-card-name">AI 专家「法律专家」</span><span class="feat-card-badge badge-pro">Pro</span></div>
+            <div class="feat-card-body">启用「法律专家」AI 模式，在翻译合同的同时，AI 会标注潜在的风险条款、不平等条款（如单方面违约金、管辖权约定），用通俗语言解释法律含义。</div>
+            <div class="feat-card-tip tip-amber">💡 <strong>场景：</strong>签署采购合同前，用「法律专家」模式快速识别对己方不利的条款，避免踩坑</div>
           </div>
-          <div class="feat-card-tip">💡 <strong>兼容性：</strong>只要是网页端的输入框，沉浸式翻译均可支持翻译</div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">📋</span><span class="feat-card-name">报价单 & 装箱单翻译</span><span class="feat-card-badge badge-pro">Pro</span></div>
+            <div class="feat-card-body">翻译供应商报价单、装箱单（Packing List）、商业发票（Commercial Invoice），确认产品规格、数量、单价无误，避免因语言误解导致的货物差异。</div>
+            <div class="feat-card-tip tip-amber">💡 <strong>场景：</strong>核对供应商报价单，确认 FOB、CIF 等贸易术语和价格条款是否符合预期</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">📚</span><span class="feat-card-name">贸易术语库</span><span class="feat-card-badge badge-pro">Pro</span></div>
+            <div class="feat-card-body">Pro 用户可自定义术语库，确保 FOB、CIF、L/C、MOQ、EXW 等贸易专有名词翻译准确一致，避免因术语误译导致合同纠纷或货物问题。</div>
+            <div class="feat-card-tip tip-amber">💡 <strong>场景：</strong>设置外贸术语库，确保所有文件中的贸易术语翻译统一准确</div>
+          </div>
         </div>
-        <div class="feat-card">
-          <div class="feat-card-head">
-            <span class="feat-card-icon">🎨</span>
-            <span class="feat-card-name">客服自定义 Prompt</span>
-            <span class="feat-card-badge badge-pro">Pro</span>
+      </div>
+
+      <!-- Trade Phase 4 -->
+      <div class="phase-panel" id="trade-phase-3">
+        <div class="phase-header reveal">
+          <div class="phase-num phase-num-trade">04</div>
+          <div>
+            <div class="phase-title">🎧 跨境电商客服 & 售后</div>
+            <div class="phase-desc">跨境电商卖家每天要处理大量来自海外买家的客服工单、退款申请、差评回复。沉浸式翻译支持 Zendesk、Gorgias 等主流客服工具，让客服团队无需懂外语也能高效处理工单。</div>
           </div>
-          <div class="feat-card-body">
-            为客服场景设置专属翻译 Prompt，例如「翻译成专业客服用语，语气礼貌耐心，符合电商退换货场景」，提升客服回复的专业度。
-          </div>
-          <div class="feat-card-tip">💡 <strong>示例 Prompt：</strong>「请翻译成专业的英语客服用语，语气礼貌、耐心，适合处理退款投诉场景」</div>
         </div>
-        <div class="feat-card">
-          <div class="feat-card-head">
-            <span class="feat-card-icon">📖</span>
-            <span class="feat-card-name">实时翻译客户来信</span>
-            <span class="feat-card-badge badge-free">免费</span>
+        <div class="phase-features reveal">
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">🎧</span><span class="feat-card-name">Zendesk / Gorgias 翻译</span><span class="feat-card-badge badge-free">免费</span></div>
+            <div class="feat-card-body">在 Zendesk、Gorgias、Freshdesk 等客服系统中，直接翻译买家来信，并在回复输入框中使用三击空格翻译功能，用中文写好回复后自动翻译成外语。</div>
+            <div class="feat-card-tip tip-amber">💡 <strong>场景：</strong>客服同学不需要懂英语，用中文写回复，自动翻译成专业外语客服用语</div>
           </div>
-          <div class="feat-card-body">
-            收到外语客户邮件或工单时，一键翻译全文，快速理解客户诉求，判断问题类型（物流/质量/退款等），提升工单处理速度。
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">⭐</span><span class="feat-card-name">Amazon / eBay 差评回复</span><span class="feat-card-badge badge-free">免费</span></div>
+            <div class="feat-card-body">翻译 Amazon、eBay 上的外语差评，理解买家诉求，用中文写好回复后通过输入框翻译功能发出专业的外语回复，提升店铺评分。</div>
+            <div class="feat-card-tip tip-amber">💡 <strong>场景：</strong>翻译 Amazon 差评，分析买家真实诉求，针对性回复提升买家满意度</div>
           </div>
-          <div class="feat-card-tip">💡 <strong>场景：</strong>高峰期大量外语工单，翻译后快速分类处理，效率提升 3-5 倍</div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">🎨</span><span class="feat-card-name">客服自定义 Prompt</span><span class="feat-card-badge badge-pro">Pro</span></div>
+            <div class="feat-card-body">为客服场景设置专属 Prompt，如「翻译成专业客服用语，语气礼貌耐心，符合跨境电商退换货场景」，提升客服回复的专业度和买家满意度。</div>
+            <div class="feat-card-tip tip-amber">💡 <strong>示例 Prompt：</strong>「请翻译成专业英语客服用语，语气礼貌耐心，适合处理退款投诉场景」</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">📦</span><span class="feat-card-name">物流 & 清关文件翻译</span><span class="feat-card-badge badge-free">免费</span></div>
+            <div class="feat-card-body">翻译物流公司的英文通知、清关要求、海关查验通知，快速了解货物状态和需要配合的事项，避免因语言问题导致货物滞港。</div>
+            <div class="feat-card-tip tip-amber">💡 <strong>场景：</strong>收到海关查验英文通知，快速翻译了解需要提供的文件和配合事项</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Phase 4: 处理文件 -->
-    <div class="phase-panel" id="phase-3">
-      <div class="phase-header reveal">
-        <div class="phase-num phase-num-4">04</div>
-        <div>
-          <div class="phase-title">📄 处理文件</div>
-          <div class="phase-desc">跨境业务中大量涉及合同、报价单、视频脚本、法律文件的翻译。BabelDOC 专业文档翻译工具让你直接翻译 PDF，保留原始排版，AI 法律专家帮你识别合同风险条款。</div>
+    <!-- ===== OPS TRACK ===== -->
+    <div class="track-panel" id="track-ops">
+      <div style="margin-bottom:24px;padding:14px 18px;background:rgba(0,212,255,0.05);border:1px solid rgba(0,212,255,0.15);border-radius:var(--radius);font-size:13px;color:var(--text-secondary);line-height:1.7">
+        🎬 <strong style="color:var(--cyan)">出海运营线</strong>：适合 MCN 达人运营、出海品牌方、KOL 合作负责人。核心痛点是语言障碍导致的达人筛选效率低、建联回复率差、客服处理慢。
+      </div>
+      <div class="phase-tabs" id="opsPhaseTabs">
+        <button class="phase-tab active-ops" onclick="switchPhase('ops',0)">① 筛达人</button>
+        <button class="phase-tab" onclick="switchPhase('ops',1)">② 发建联信</button>
+        <button class="phase-tab" onclick="switchPhase('ops',2)">③ 客服 / 售后</button>
+        <button class="phase-tab" onclick="switchPhase('ops',3)">④ 处理文件</button>
+      </div>
+
+      <!-- Ops Phase 1 -->
+      <div class="phase-panel active" id="ops-phase-0">
+        <div class="phase-header reveal">
+          <div class="phase-num phase-num-ops">01</div>
+          <div>
+            <div class="phase-title">🔍 筛达人</div>
+            <div class="phase-desc">在 YouTube、TikTok、Instagram 等平台筛选海外达人时，需要快速读懂达人主页、评论区、视频简介。沉浸式翻译让你不懂英语/日语/韩语也能高效筛选合适的达人。</div>
+          </div>
+        </div>
+        <div class="phase-features reveal">
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">📺</span><span class="feat-card-name">YouTube 达人主页翻译</span><span class="feat-card-badge badge-free">免费</span></div>
+            <div class="feat-card-body">打开 YouTube 达人频道页，一键翻译频道简介、视频标题、评论区内容。快速判断达人风格、受众画像、内容方向是否与品牌契合。</div>
+            <div class="feat-card-tip">💡 <strong>操作提示：</strong>打开达人频道页 → 点击插件图标 → 页面即刻双语对照显示</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">🎬</span><span class="feat-card-name">无字幕视频翻译</span><span class="feat-card-badge badge-pro">Pro</span></div>
+            <div class="feat-card-body">针对没有字幕的 YouTube 视频，沉浸式翻译可自动识别语音并生成双语字幕，让你看懂达人的真实内容风格，评估合作价值。</div>
+            <div class="feat-card-tip">💡 <strong>场景：</strong>评估海外达人视频内容质量，无需懂外语也能判断内容调性</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">🎵</span><span class="feat-card-name">TikTok / INS 主页翻译</span><span class="feat-card-badge badge-free">免费</span></div>
+            <div class="feat-card-body">翻译 TikTok 达人主页简介、评论区互动内容、Instagram 帖子文案，快速了解达人的受众语言偏好和内容风格，提升筛选效率。</div>
+            <div class="feat-card-tip">💡 <strong>场景：</strong>筛选 TikTok Shop 达人时，快速读懂达人主页和粉丝评论</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">💬</span><span class="feat-card-name">评论区双语对照</span><span class="feat-card-badge badge-free">免费</span></div>
+            <div class="feat-card-body">翻译达人视频的评论区，了解粉丝真实反馈、互动质量、受众画像，帮助判断达人粉丝是否为目标客群，避免踩坑假粉/低质达人。</div>
+            <div class="feat-card-tip">💡 <strong>场景：</strong>通过评论区翻译判断达人粉丝活跃度和真实性</div>
+          </div>
         </div>
       </div>
-      <div class="phase-features reveal">
-        <div class="feat-card">
-          <div class="feat-card-head">
-            <span class="feat-card-icon">📄</span>
-            <span class="feat-card-name">BabelDOC 合同 / 报价单翻译</span>
-            <span class="feat-card-badge badge-pro">Pro</span>
+
+      <!-- Ops Phase 2 -->
+      <div class="phase-panel" id="ops-phase-1">
+        <div class="phase-header reveal">
+          <div class="phase-num phase-num-ops">02</div>
+          <div>
+            <div class="phase-title">✉️ 发建联信</div>
+            <div class="phase-desc">向海外达人发送合作邀请邮件是出海运营的核心环节。沉浸式翻译的 Gmail AI Reply 和输入框翻译功能，让你用母语写作，AI 自动翻译成地道的外语表达，提升建联回复率。</div>
           </div>
-          <div class="feat-card-body">
-            上传外语合同、报价单 PDF，BabelDOC 自动生成双语对照版本，保留原始排版格式。Pro 用户每月 <strong style="color:var(--green)">100 张免费额度</strong>，超出后按量计费。
-          </div>
-          <div class="feat-card-tip">💡 <strong>场景：</strong>收到海外达人/供应商的英文合同，上传后 5 分钟内获得中英双语对照版本</div>
         </div>
-        <div class="feat-card">
-          <div class="feat-card-head">
-            <span class="feat-card-icon">🎬</span>
-            <span class="feat-card-name">视频脚本 PDF 翻译</span>
-            <span class="feat-card-badge badge-pro">Pro</span>
+        <div class="phase-features reveal">
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">✉️</span><span class="feat-card-name">Gmail AI Reply</span><span class="feat-card-badge badge-pro">Pro</span></div>
+            <div class="feat-card-body">在 Gmail 中直接使用 AI 辅助回复。用中文描述你想表达的意思，AI 自动生成地道的英文/日文/韩文邮件，支持一键插入草稿。</div>
+            <div class="feat-card-tip">💡 <strong>操作：</strong>打开 Gmail 写信界面 → 点击沉浸式翻译 AI 图标 → 输入中文意图 → 生成外语邮件</div>
           </div>
-          <div class="feat-card-body">
-            将外语视频脚本 PDF 上传至 BabelDOC，获得双语对照版本，方便运营团队理解达人内容方向，或将中文脚本翻译成外语发给海外达人。
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">🔄</span><span class="feat-card-name">双语对照确认语气</span><span class="feat-card-badge badge-free">免费</span></div>
+            <div class="feat-card-body">发送前，将外语邮件内容粘贴到网页，开启双语对照模式，逐句确认翻译是否准确、语气是否合适，避免因语气不当导致建联失败。</div>
+            <div class="feat-card-tip">💡 <strong>场景：</strong>发送前双语核对，确保邮件语气专业友好，不显得生硬或过于正式</div>
           </div>
-          <div class="feat-card-tip">💡 <strong>场景：</strong>给海外达人发脚本时，将中文脚本翻译成英文/日文，保留格式直接发送</div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">🎨</span><span class="feat-card-name">自定义 Prompt（美式口语）</span><span class="feat-card-badge badge-pro">Pro</span></div>
+            <div class="feat-card-body">Pro 用户可设置自定义翻译 Prompt，例如「翻译成美式口语风格，语气友好轻松」，让建联信更贴近海外达人的沟通习惯，提升回复率。</div>
+            <div class="feat-card-tip">💡 <strong>示例 Prompt：</strong>「请翻译成美式英语，语气轻松友好，像朋友之间的商业沟通」</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">⌨️</span><span class="feat-card-name">输入框三击空格翻译</span><span class="feat-card-badge badge-free">免费</span></div>
+            <div class="feat-card-body">在任何网页输入框中，输入中文内容后连击三次空格，即可自动翻译成目标语言。适用于 Gmail、LinkedIn、各类 CRM 系统的邮件撰写。</div>
+            <div class="feat-card-tip">💡 <strong>操作：</strong>输入框中写中文 → 连按三次空格 → 自动翻译为外语，无需切换工具</div>
+          </div>
         </div>
-        <div class="feat-card">
-          <div class="feat-card-head">
-            <span class="feat-card-icon">⚖️</span>
-            <span class="feat-card-name">AI 专家「法律专家」</span>
-            <span class="feat-card-badge badge-pro">Pro</span>
+      </div>
+
+      <!-- Ops Phase 3 -->
+      <div class="phase-panel" id="ops-phase-2">
+        <div class="phase-header reveal">
+          <div class="phase-num phase-num-ops">03</div>
+          <div>
+            <div class="phase-title">🎧 客服 / 售后</div>
+            <div class="phase-desc">处理海外客户的售后咨询、投诉、退款请求时，需要快速读懂外语内容并给出专业回复。沉浸式翻译支持 Zendesk、Gorgias 等主流客服工具的输入框翻译。</div>
           </div>
-          <div class="feat-card-body">
-            Pro 用户可启用「法律专家」AI 模式，在翻译合同的同时，AI 会标注潜在的风险条款、不平等条款，用通俗语言解释法律含义，降低合同风险。
-          </div>
-          <div class="feat-card-tip">💡 <strong>场景：</strong>签署海外达人合作协议前，用「法律专家」模式快速识别不利条款</div>
         </div>
-        <div class="feat-card">
-          <div class="feat-card-head">
-            <span class="feat-card-icon">📚</span>
-            <span class="feat-card-name">术语库（行业专词）</span>
-            <span class="feat-card-badge badge-pro">Pro</span>
+        <div class="phase-features reveal">
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">🎧</span><span class="feat-card-name">Zendesk 输入框翻译</span><span class="feat-card-badge badge-free">免费</span></div>
+            <div class="feat-card-body">在 Zendesk 客服工单系统中，直接翻译客户来信，并在回复输入框中使用三击空格翻译功能，用中文写好回复后自动翻译成外语发送。</div>
+            <div class="feat-card-tip">💡 <strong>场景：</strong>客服同学不需要懂英语，用中文写回复，自动翻译成专业外语客服用语</div>
           </div>
-          <div class="feat-card-body">
-            Pro 用户可自定义术语库，确保行业专有名词（如 SKU、MOQ、FOB、CIF 等贸易术语）翻译准确一致，避免因术语误译导致合同纠纷。
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">💬</span><span class="feat-card-name">Gorgias / Freshdesk 兼容</span><span class="feat-card-badge badge-free">免费</span></div>
+            <div class="feat-card-body">沉浸式翻译支持所有网页端客服工具的输入框翻译，包括 Gorgias、Freshdesk、Intercom 等，覆盖跨境电商主流客服平台。</div>
+            <div class="feat-card-tip">💡 <strong>兼容性：</strong>只要是网页端的输入框，沉浸式翻译均可支持翻译</div>
           </div>
-          <div class="feat-card-tip">💡 <strong>场景：</strong>设置贸易术语库，确保 FOB、CIF、L/C 等专业词汇翻译准确，不出错</div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">🎨</span><span class="feat-card-name">客服自定义 Prompt</span><span class="feat-card-badge badge-pro">Pro</span></div>
+            <div class="feat-card-body">为客服场景设置专属翻译 Prompt，例如「翻译成专业客服用语，语气礼貌耐心，符合电商退换货场景」，提升客服回复的专业度。</div>
+            <div class="feat-card-tip">💡 <strong>示例 Prompt：</strong>「请翻译成专业英语客服用语，语气礼貌耐心，适合处理退款投诉场景」</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">📖</span><span class="feat-card-name">实时翻译客户来信</span><span class="feat-card-badge badge-free">免费</span></div>
+            <div class="feat-card-body">收到外语客户邮件或工单时，一键翻译全文，快速理解客户诉求，判断问题类型（物流/质量/退款等），提升工单处理速度。</div>
+            <div class="feat-card-tip">💡 <strong>场景：</strong>高峰期大量外语工单，翻译后快速分类处理，效率提升 3-5 倍</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ops Phase 4 -->
+      <div class="phase-panel" id="ops-phase-3">
+        <div class="phase-header reveal">
+          <div class="phase-num phase-num-ops">04</div>
+          <div>
+            <div class="phase-title">📄 处理文件</div>
+            <div class="phase-desc">跨境业务中大量涉及合同、视频脚本、法律文件的翻译。BabelDOC 专业文档翻译工具让你直接翻译 PDF，保留原始排版，AI 法律专家帮你识别合同风险条款。</div>
+          </div>
+        </div>
+        <div class="phase-features reveal">
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">📄</span><span class="feat-card-name">BabelDOC 合同翻译</span><span class="feat-card-badge badge-pro">Pro</span></div>
+            <div class="feat-card-body">上传外语合作协议 PDF，BabelDOC 自动生成双语对照版本，保留原始排版格式。Pro 用户每月 <strong style="color:var(--green)">100 张免费额度</strong>，超出后按量计费。</div>
+            <div class="feat-card-tip">💡 <strong>场景：</strong>收到海外达人的英文合作协议，上传后 5 分钟内获得中英双语对照版本</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">🎬</span><span class="feat-card-name">视频脚本 PDF 翻译</span><span class="feat-card-badge badge-pro">Pro</span></div>
+            <div class="feat-card-body">将外语视频脚本 PDF 上传至 BabelDOC，获得双语对照版本，方便运营团队理解达人内容方向，或将中文脚本翻译成外语发给海外达人。</div>
+            <div class="feat-card-tip">💡 <strong>场景：</strong>给海外达人发脚本时，将中文脚本翻译成英文/日文，保留格式直接发送</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">⚖️</span><span class="feat-card-name">AI 专家「法律专家」</span><span class="feat-card-badge badge-pro">Pro</span></div>
+            <div class="feat-card-body">Pro 用户可启用「法律专家」AI 模式，在翻译合同的同时，AI 会标注潜在的风险条款、不平等条款，用通俗语言解释法律含义，降低合同风险。</div>
+            <div class="feat-card-tip">💡 <strong>场景：</strong>签署海外达人合作协议前，用「法律专家」模式快速识别不利条款</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-card-head"><span class="feat-card-icon">📚</span><span class="feat-card-name">术语库（行业专词）</span><span class="feat-card-badge badge-pro">Pro</span></div>
+            <div class="feat-card-body">Pro 用户可自定义术语库，确保行业专有名词翻译准确一致，避免因术语误译导致合同纠纷。</div>
+            <div class="feat-card-tip">💡 <strong>场景：</strong>设置达人合作相关术语库，确保合同中的专业词汇翻译准确</div>
+          </div>
         </div>
       </div>
     </div>
@@ -888,32 +864,32 @@
     <div class="sec-head reveal">
       <div class="sec-label">// Creation Guide</div>
       <h2 class="sec-title">创作指南</h2>
-      <p class="sec-desc">我们希望你用自己的风格创作，以下是一些方向建议和必须包含的关键信息。</p>
+      <p class="sec-desc">两条线都可以做，选你最熟悉的场景切入。以下是方向建议和必须包含的关键信息。</p>
     </div>
-
     <div class="guide-grid reveal">
       <div class="guide-card">
-        <div class="guide-card-label" style="color:var(--cyan)">// 内容方向建议</div>
-        <div class="guide-card-title">选一个你最熟悉的场景切入</div>
+        <div class="guide-card-label" style="color:var(--amber)">// 跨境贸易线 · 内容方向</div>
+        <div class="guide-card-title">📦 外贸/跨境电商场景切入</div>
         <ul class="guide-list">
-          <li>「我是怎么用沉浸式翻译筛 TikTok 达人的」——展示筛达人工作流</li>
-          <li>「出海运营必备工具，建联信再也不怕语言不好」——聚焦邮件场景</li>
-          <li>「跨境电商客服神器，英文工单不再是噩梦」——聚焦客服场景</li>
-          <li>「合同翻译 + AI 法律专家，出海签合同不踩坑」——聚焦文件场景</li>
-          <li>「出海全流程工具盘点，这一个插件能顶 4 个工具」——综合展示</li>
+          <li>「外贸人必备！用这个工具看 Alibaba 供应商评价，再也不怕被坑」</li>
+          <li>「跨境电商卖家如何用 AI 翻译工具处理英文合同，法律专家帮你看风险」</li>
+          <li>「外贸邮件不会写？一个插件帮你搞定询盘、催单、投诉所有场景」</li>
+          <li>「BabelDOC 翻译报价单，FOB/CIF 再也不搞混，还能保留原始格式」</li>
+          <li>「跨境客服神器：英文工单不再是噩梦，客服效率提升 5 倍」</li>
         </ul>
       </div>
       <div class="guide-card">
-        <div class="guide-card-label" style="color:var(--teal)">// 评判标准</div>
-        <div class="guide-card-title">好内容的三个核心标准</div>
+        <div class="guide-card-label" style="color:var(--cyan)">// 出海运营线 · 内容方向</div>
+        <div class="guide-card-title">🎬 达人运营场景切入</div>
         <ul class="guide-list">
-          <li><strong style="color:var(--text-primary)">真实场景</strong>：用你自己的实际工作场景演示，比虚构场景更有说服力</li>
-          <li><strong style="color:var(--text-primary)">操作可见</strong>：录屏展示实际操作过程，让观众看到「装上就能用」的便捷性</li>
-          <li><strong style="color:var(--text-primary)">痛点共鸣</strong>：先讲跨境从业者的语言痛点，再引出工具解决方案</li>
+          <li>「我是怎么用沉浸式翻译筛 TikTok 达人的，效率提升 10 倍」</li>
+          <li>「出海运营必备工具，建联信再也不怕语言不好，回复率翻倍」</li>
+          <li>「达人合同看不懂？AI 法律专家帮你识别不平等条款」</li>
+          <li>「给海外达人发脚本，中文翻英文保留格式，5 分钟搞定」</li>
+          <li>「出海全流程工具盘点，这一个插件能顶 4 个工具」</li>
         </ul>
       </div>
     </div>
-
     <div class="guide-must reveal" style="margin-top:20px">
       <div class="guide-must-title">// 必须包含的关键信息</div>
       <div class="must-item">
@@ -948,98 +924,31 @@
       <h2 class="sec-title">安装指引</h2>
       <p class="sec-desc">3 分钟完成安装，基础功能立即可用，无需注册账号。</p>
     </div>
-
     <div class="install-tabs reveal">
       <button class="install-tab active" onclick="switchInstall(0)">Chrome / Edge</button>
       <button class="install-tab" onclick="switchInstall(1)">Safari（iOS / macOS）</button>
       <button class="install-tab" onclick="switchInstall(2)">Firefox</button>
     </div>
-
     <div class="install-panel active" id="install-0">
       <div class="install-steps reveal">
-        <div class="install-step">
-          <div class="install-step-num">01</div>
-          <div class="install-step-body">
-            <div class="install-step-title">打开 Chrome 网上应用店</div>
-            <div class="install-step-desc">在 Chrome 或 Edge 浏览器中，访问 Chrome 网上应用店，搜索「沉浸式翻译」。</div>
-            <a href="https://chrome.google.com/webstore/detail/immersive-translate/bpoadfkcbjbfhfodiogcnhhhpibjhbnh" target="_blank" class="install-step-link">🔗 Chrome 商店直达链接 ↗</a>
-          </div>
-        </div>
-        <div class="install-step">
-          <div class="install-step-num">02</div>
-          <div class="install-step-body">
-            <div class="install-step-title">点击「添加至 Chrome」</div>
-            <div class="install-step-desc">找到沉浸式翻译（Immersive Translate）扩展，点击「添加至 Chrome」按钮，确认安装。</div>
-          </div>
-        </div>
-        <div class="install-step">
-          <div class="install-step-num">03</div>
-          <div class="install-step-body">
-            <div class="install-step-title">固定插件到工具栏</div>
-            <div class="install-step-desc">安装完成后，点击浏览器右上角扩展图标（拼图图标），找到沉浸式翻译，点击固定按钮，方便随时使用。</div>
-          </div>
-        </div>
-        <div class="install-step">
-          <div class="install-step-num">04</div>
-          <div class="install-step-body">
-            <div class="install-step-title">打开任意外语网页，开始翻译</div>
-            <div class="install-step-desc">打开 YouTube、TikTok 或任意外语网站，点击插件图标或使用快捷键，页面立即变成双语对照。基础功能无需注册，直接使用。</div>
-          </div>
-        </div>
+        <div class="install-step"><div class="install-step-num">01</div><div class="install-step-body"><div class="install-step-title">打开 Chrome 网上应用店</div><div class="install-step-desc">在 Chrome 或 Edge 浏览器中，访问 Chrome 网上应用店，搜索「沉浸式翻译」。</div><a href="https://chrome.google.com/webstore/detail/immersive-translate/bpoadfkcbjbfhfodiogcnhhhpibjhbnh" target="_blank" class="install-step-link">🔗 Chrome 商店直达链接 ↗</a></div></div>
+        <div class="install-step"><div class="install-step-num">02</div><div class="install-step-body"><div class="install-step-title">点击「添加至 Chrome」</div><div class="install-step-desc">找到沉浸式翻译（Immersive Translate）扩展，点击「添加至 Chrome」按钮，确认安装。</div></div></div>
+        <div class="install-step"><div class="install-step-num">03</div><div class="install-step-body"><div class="install-step-title">固定插件到工具栏</div><div class="install-step-desc">安装完成后，点击浏览器右上角扩展图标（拼图图标），找到沉浸式翻译，点击固定按钮，方便随时使用。</div></div></div>
+        <div class="install-step"><div class="install-step-num">04</div><div class="install-step-body"><div class="install-step-title">打开任意外语网页，开始翻译</div><div class="install-step-desc">打开 Alibaba、YouTube、Gmail 或任意外语网站，点击插件图标，页面立即变成双语对照。基础功能无需注册，直接使用。</div></div></div>
       </div>
     </div>
-
     <div class="install-panel" id="install-1">
       <div class="install-steps reveal">
-        <div class="install-step">
-          <div class="install-step-num">01</div>
-          <div class="install-step-body">
-            <div class="install-step-title">打开 App Store 搜索</div>
-            <div class="install-step-desc">在 iPhone / iPad 或 Mac 的 App Store 中搜索「沉浸式翻译」，找到官方应用。</div>
-            <a href="https://apps.apple.com/app/immersive-translate/id6447957425" target="_blank" class="install-step-link">🔗 App Store 直达链接 ↗</a>
-          </div>
-        </div>
-        <div class="install-step">
-          <div class="install-step-num">02</div>
-          <div class="install-step-body">
-            <div class="install-step-title">安装并在 Safari 中启用</div>
-            <div class="install-step-desc">下载安装后，进入「设置 → Safari → 扩展程序」，找到沉浸式翻译并开启。</div>
-          </div>
-        </div>
-        <div class="install-step">
-          <div class="install-step-num">03</div>
-          <div class="install-step-body">
-            <div class="install-step-title">打开 Safari，开始翻译</div>
-            <div class="install-step-desc">在 Safari 中打开任意外语网页，点击地址栏左侧的「AA」图标，选择沉浸式翻译，即可开始翻译。</div>
-          </div>
-        </div>
+        <div class="install-step"><div class="install-step-num">01</div><div class="install-step-body"><div class="install-step-title">打开 App Store 搜索</div><div class="install-step-desc">在 iPhone / iPad 或 Mac 的 App Store 中搜索「沉浸式翻译」，找到官方应用。</div><a href="https://apps.apple.com/app/immersive-translate/id6447957425" target="_blank" class="install-step-link">🔗 App Store 直达链接 ↗</a></div></div>
+        <div class="install-step"><div class="install-step-num">02</div><div class="install-step-body"><div class="install-step-title">安装并在 Safari 中启用</div><div class="install-step-desc">下载安装后，进入「设置 → Safari → 扩展程序」，找到沉浸式翻译并开启。</div></div></div>
+        <div class="install-step"><div class="install-step-num">03</div><div class="install-step-body"><div class="install-step-title">打开 Safari，开始翻译</div><div class="install-step-desc">在 Safari 中打开任意外语网页，点击地址栏左侧的「AA」图标，选择沉浸式翻译，即可开始翻译。</div></div></div>
       </div>
     </div>
-
     <div class="install-panel" id="install-2">
       <div class="install-steps reveal">
-        <div class="install-step">
-          <div class="install-step-num">01</div>
-          <div class="install-step-body">
-            <div class="install-step-title">访问 Firefox 附加组件商店</div>
-            <div class="install-step-desc">在 Firefox 浏览器中，访问 Firefox 附加组件商店，搜索「Immersive Translate」。</div>
-            <a href="https://addons.mozilla.org/firefox/addon/immersive-translate/" target="_blank" class="install-step-link">🔗 Firefox 商店直达链接 ↗</a>
-          </div>
-        </div>
-        <div class="install-step">
-          <div class="install-step-num">02</div>
-          <div class="install-step-body">
-            <div class="install-step-title">点击「添加到 Firefox」</div>
-            <div class="install-step-desc">找到沉浸式翻译，点击「添加到 Firefox」，确认权限后完成安装。</div>
-          </div>
-        </div>
-        <div class="install-step">
-          <div class="install-step-num">03</div>
-          <div class="install-step-body">
-            <div class="install-step-title">打开外语网页，开始翻译</div>
-            <div class="install-step-desc">安装完成后，打开任意外语网页，点击工具栏中的沉浸式翻译图标即可开始翻译。</div>
-          </div>
-        </div>
+        <div class="install-step"><div class="install-step-num">01</div><div class="install-step-body"><div class="install-step-title">访问 Firefox 附加组件商店</div><div class="install-step-desc">在 Firefox 浏览器中，访问 Firefox 附加组件商店，搜索「Immersive Translate」。</div><a href="https://addons.mozilla.org/firefox/addon/immersive-translate/" target="_blank" class="install-step-link">🔗 Firefox 商店直达链接 ↗</a></div></div>
+        <div class="install-step"><div class="install-step-num">02</div><div class="install-step-body"><div class="install-step-title">点击「添加到 Firefox」</div><div class="install-step-desc">找到沉浸式翻译，点击「添加到 Firefox」，确认权限后完成安装。</div></div></div>
+        <div class="install-step"><div class="install-step-num">03</div><div class="install-step-body"><div class="install-step-title">打开外语网页，开始翻译</div><div class="install-step-desc">安装完成后，打开任意外语网页，点击工具栏中的沉浸式翻译图标即可开始翻译。</div></div></div>
       </div>
     </div>
   </div>
@@ -1054,114 +963,12 @@
       <p class="sec-desc">从接洽到发布，6 个步骤，清晰透明，没有隐藏流程。</p>
     </div>
     <div class="flow-steps">
-      <div class="flow-step reveal">
-        <div class="flow-step-left">
-          <div class="flow-step-num">01</div>
-          <div class="flow-step-line"></div>
-        </div>
-        <div class="flow-step-right">
-          <div class="flow-step-tag fst-1">接洽确认</div>
-          <div class="flow-step-title">添加对应平台负责人微信，说明账号信息</div>
-          <div class="flow-step-desc">根据你主要创作的平台，直接添加对应同事的微信，说明你的平台、粉丝规模，并发送账号链接，我们会在 1 个工作日内回复。</div>
-          <div class="flow-step-items">
-            <span class="flow-item">📱 发送账号链接</span>
-            <span class="flow-item">👥 说明粉丝规模</span>
-            <span class="flow-item">📋 说明内容方向</span>
-          </div>
-        </div>
-      </div>
-      <div class="flow-step reveal">
-        <div class="flow-step-left">
-          <div class="flow-step-num">02</div>
-          <div class="flow-step-line"></div>
-        </div>
-        <div class="flow-step-right">
-          <div class="flow-step-tag fst-2">资料发放</div>
-          <div class="flow-step-title">我们发给你这份合作素材页 + 专属折扣码</div>
-          <div class="flow-step-desc">确认合作后，我们会发给你这份合作参考页面链接、粉丝专属 9 折折扣码、官方 Logo 素材，以及 Pro 免费体验账号（供录制使用）。</div>
-          <div class="flow-step-items">
-            <span class="flow-item">🔗 合作参考页面</span>
-            <span class="flow-item">🏷️ 粉丝专属折扣码</span>
-            <span class="flow-item">🎁 Pro 免费体验账号</span>
-          </div>
-        </div>
-      </div>
-      <div class="flow-step reveal">
-        <div class="flow-step-left">
-          <div class="flow-step-num">03</div>
-          <div class="flow-step-line"></div>
-        </div>
-        <div class="flow-step-right">
-          <div class="flow-step-tag fst-3">创作与审核</div>
-          <div class="flow-step-title">自由创作，两个节点对齐一下就行</div>
-          <div class="flow-step-desc">我们鼓励你用自己的风格和语言创作，不需要按照脚本字字照念。有两个轻量审核节点：<strong style="color:var(--cyan)">①脚本审核</strong>——开拍前我们确认一下关键信息有没有跑偏；<strong style="color:var(--cyan)">②视频审核</strong>——发布前快速过一遍，主要是避免误导观众，不干涉你的内容风格。</div>
-          <div class="flow-step-items">
-            <span class="flow-item">🎨 自由创作，风格自定</span>
-            <span class="flow-item">📝 脚本审核（开拍前）</span>
-            <span class="flow-item">🎬 视频审核（发布前）</span>
-          </div>
-        </div>
-      </div>
-      <div class="flow-step reveal">
-        <div class="flow-step-left">
-          <div class="flow-step-num">04</div>
-          <div class="flow-step-line"></div>
-        </div>
-        <div class="flow-step-right">
-          <div class="flow-step-tag fst-1">联盟计划</div>
-          <div class="flow-step-title">加入联盟计划，每笔转化都有佣金</div>
-          <div class="flow-step-desc">除了合作费用，我们强烈建议你同时加入沉浸式翻译联盟计划。你的粉丝通过你的专属链接购买 Pro，你可以获得持续的佣金收入，这是很多 KOL 的长期被动收入来源。</div>
-          <div class="flow-step-items">
-            <span class="flow-item">💰 每笔转化有佣金</span>
-            <span class="flow-item">🔗 专属推广链接</span>
-            <a href="https://immersivetranslate.com/zh-Hans/affiliate/" target="_blank" class="flow-item" style="color:var(--cyan);border-color:rgba(0,212,255,0.25)">📋 查看联盟计划详情 ↗</a>
-          </div>
-        </div>
-      </div>
-      <div class="flow-step reveal">
-        <div class="flow-step-left">
-          <div class="flow-step-num">05</div>
-          <div class="flow-step-line"></div>
-        </div>
-        <div class="flow-step-right">
-          <div class="flow-step-tag fst-3">发布 &amp; 结算</div>
-          <div class="flow-step-title">视频发布，评论区置顶链接与折扣码，报酬结算</div>
-          <div class="flow-step-desc">视频发布后，请在评论区置顶官网链接和粉丝专属折扣码，并在视频结尾提到周卡抽奖。这些动作直接影响转化效果。核实发布后，我们按之前约定的方式完成结算。</div>
-          <div class="benefit-cards">
-            <div class="benefit-card">
-              <div style="font-size:11px;font-weight:800;color:var(--amber);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">🎁 粉丝福利 · 免费周卡抽奖</div>
-              <div style="font-size:13px;color:var(--text-primary);font-weight:600;margin-bottom:4px">免费周卡 × 至少 5 张</div>
-              <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">我们会提供至少 5 张免费周卡，供你在评论区或视频结尾展开抽奖互动，提升观众参与感与转化。</div>
-            </div>
-            <div class="benefit-card">
-              <div style="font-size:11px;font-weight:800;color:var(--cyan);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">🏷️ 粉丝专属折扣</div>
-              <div style="font-size:13px;color:var(--text-primary);font-weight:600;margin-bottom:4px">Pro 专属 9 折折扣码</div>
-              <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">你的粉丝通过专属折扣码购买 Pro 可享 9 折。这个码必须在评论区置顶或视频结尾提到，直接影响转化效果。</div>
-            </div>
-          </div>
-          <div class="flow-step-items" style="margin-top:16px">
-            <span class="flow-item">🔗 评论区置顶链接与折扣码</span>
-            <span class="flow-item" style="background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.2);color:var(--amber)">🎁 抽奖周卡已就位</span>
-            <span class="flow-item">💰 报酬结算</span>
-          </div>
-        </div>
-      </div>
-      <div class="flow-step reveal">
-        <div class="flow-step-left">
-          <div class="flow-step-num">06</div>
-          <div class="flow-step-line"></div>
-        </div>
-        <div class="flow-step-right">
-          <div class="flow-step-tag fst-4">专属福利</div>
-          <div class="flow-step-title">发布后一周，我们帮你免费投流 🎁</div>
-          <div class="flow-step-desc">视频发布后的第一周，我们会持续观察自然流量表现。如果数据跑得不错，我们会根据情况酌情为你的视频进行<strong style="color:var(--green)">免费投流加热</strong>，帮你触达更多潜在观众——这是我们对合作创作者的额外回馈，不是所有合作都有，但我们会尽量争取。</div>
-          <div class="flow-step-items">
-            <span class="flow-item">📊 发布后一周数据观察</span>
-            <span class="flow-item">🚀 酌情免费投流加热</span>
-            <span class="flow-item">🎯 触达更多潜在观众</span>
-          </div>
-        </div>
-      </div>
+      <div class="flow-step reveal"><div class="flow-step-left"><div class="flow-step-num">01</div><div class="flow-step-line"></div></div><div class="flow-step-right"><div class="flow-step-tag fst-1">接洽确认</div><div class="flow-step-title">添加对应平台负责人微信，说明账号信息</div><div class="flow-step-desc">根据你主要创作的平台，直接添加对应同事的微信，说明你的平台、粉丝规模，并发送账号链接，我们会在 1 个工作日内回复。</div><div class="flow-step-items"><span class="flow-item">📱 发送账号链接</span><span class="flow-item">👥 说明粉丝规模</span><span class="flow-item">📋 说明内容方向</span></div></div></div>
+      <div class="flow-step reveal"><div class="flow-step-left"><div class="flow-step-num">02</div><div class="flow-step-line"></div></div><div class="flow-step-right"><div class="flow-step-tag fst-2">资料发放</div><div class="flow-step-title">我们发给你这份合作素材页 + 专属折扣码</div><div class="flow-step-desc">确认合作后，我们会发给你这份合作参考页面链接、粉丝专属 9 折折扣码、官方 Logo 素材，以及 Pro 免费体验账号（供录制使用）。</div><div class="flow-step-items"><span class="flow-item">🔗 合作参考页面</span><span class="flow-item">🏷️ 粉丝专属折扣码</span><span class="flow-item">🎁 Pro 免费体验账号</span></div></div></div>
+      <div class="flow-step reveal"><div class="flow-step-left"><div class="flow-step-num">03</div><div class="flow-step-line"></div></div><div class="flow-step-right"><div class="flow-step-tag fst-3">创作与审核</div><div class="flow-step-title">自由创作，两个节点对齐一下就行</div><div class="flow-step-desc">我们鼓励你用自己的风格和语言创作，不需要按照脚本字字照念。有两个轻量审核节点：<strong style="color:var(--cyan)">①脚本审核</strong>——开拍前我们确认一下关键信息有没有跑偏；<strong style="color:var(--cyan)">②视频审核</strong>——发布前快速过一遍，主要是避免误导观众，不干涉你的内容风格。</div><div class="flow-step-items"><span class="flow-item">🎨 自由创作，风格自定</span><span class="flow-item">📝 脚本审核（开拍前）</span><span class="flow-item">🎬 视频审核（发布前）</span></div></div></div>
+      <div class="flow-step reveal"><div class="flow-step-left"><div class="flow-step-num">04</div><div class="flow-step-line"></div></div><div class="flow-step-right"><div class="flow-step-tag fst-1">联盟计划</div><div class="flow-step-title">加入联盟计划，每笔转化都有佣金</div><div class="flow-step-desc">除了合作费用，我们强烈建议你同时加入沉浸式翻译联盟计划。你的粉丝通过你的专属链接购买 Pro，你可以获得持续的佣金收入，这是很多 KOL 的长期被动收入来源。</div><div class="flow-step-items"><span class="flow-item">💰 每笔转化有佣金</span><span class="flow-item">🔗 专属推广链接</span><a href="https://immersivetranslate.com/zh-Hans/affiliate/" target="_blank" class="flow-item" style="color:var(--cyan);border-color:rgba(0,212,255,0.22)">📋 查看联盟计划详情 ↗</a></div></div></div>
+      <div class="flow-step reveal"><div class="flow-step-left"><div class="flow-step-num">05</div><div class="flow-step-line"></div></div><div class="flow-step-right"><div class="flow-step-tag fst-3">发布 &amp; 结算</div><div class="flow-step-title">视频发布，评论区置顶链接与折扣码，报酬结算</div><div class="flow-step-desc">视频发布后，请在评论区置顶官网链接和粉丝专属折扣码，并在视频结尾提到周卡抽奖。核实发布后，我们按之前约定的方式完成结算。</div><div class="benefit-cards"><div class="benefit-card"><div style="font-size:11px;font-weight:800;color:var(--amber);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">🎁 粉丝福利 · 免费周卡抽奖</div><div style="font-size:13px;color:var(--text-primary);font-weight:600;margin-bottom:4px">免费周卡 × 至少 5 张</div><div style="font-size:12px;color:var(--text-secondary);line-height:1.6">我们会提供至少 5 张免费周卡，供你在评论区或视频结尾展开抽奖互动，提升观众参与感与转化。</div></div><div class="benefit-card"><div style="font-size:11px;font-weight:800;color:var(--cyan);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">🏷️ 粉丝专属折扣</div><div style="font-size:13px;color:var(--text-primary);font-weight:600;margin-bottom:4px">Pro 专属 9 折折扣码</div><div style="font-size:12px;color:var(--text-secondary);line-height:1.6">你的粉丝通过专属折扣码购买 Pro 可享 9 折。这个码必须在评论区置顶或视频结尾提到，直接影响转化效果。</div></div></div><div class="flow-step-items" style="margin-top:16px"><span class="flow-item">🔗 评论区置顶链接与折扣码</span><span class="flow-item" style="background:rgba(245,158,11,0.07);border-color:rgba(245,158,11,0.18);color:var(--amber)">🎁 抽奖周卡已就位</span><span class="flow-item">💰 报酬结算</span></div></div></div>
+      <div class="flow-step reveal"><div class="flow-step-left"><div class="flow-step-num">06</div><div class="flow-step-line"></div></div><div class="flow-step-right"><div class="flow-step-tag fst-4">专属福利</div><div class="flow-step-title">发布后一周，我们帮你免费投流 🎁</div><div class="flow-step-desc">视频发布后的第一周，我们会持续观察自然流量表现。如果数据跑得不错，我们会根据情况酌情为你的视频进行<strong style="color:var(--green)">免费投流加热</strong>，帮你触达更多潜在观众。</div><div class="flow-step-items"><span class="flow-item">📊 发布后一周数据观察</span><span class="flow-item">🚀 酌情免费投流加热</span><span class="flow-item">🎯 触达更多潜在观众</span></div></div></div>
     </div>
   </div>
 </section>
@@ -1175,38 +982,10 @@
       <p class="sec-desc">根据你主要创作的平台，直接添加对应同事的微信，说明平台和粉丝规模，我们会尽快回复。</p>
     </div>
     <div class="contact-grid reveal">
-      <div class="wx-card">
-        <div class="wx-platform" style="background:#1a1a2e;overflow:hidden"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Xiaohongshu_logo.svg/512px-Xiaohongshu_logo.svg.png" alt="小红书" style="width:100%;height:100%;object-fit:contain;padding:4px" onerror="this.parentNode.innerHTML='🍠'" /></div>
-        <div class="wx-info">
-          <div class="wx-name">Sherry · 小红书负责人</div>
-          <div class="wx-id">nings102</div>
-        </div>
-        <button class="wx-copy" onclick="copyWx(this,'nings102')">复制微信号</button>
-      </div>
-      <div class="wx-card">
-        <div class="wx-platform" style="background:#1a1a2e;overflow:hidden"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/TikTok_logo.svg/512px-TikTok_logo.svg.png" alt="抖音" style="width:100%;height:100%;object-fit:contain;padding:4px" onerror="this.parentNode.innerHTML='🎵'" /></div>
-        <div class="wx-info">
-          <div class="wx-name">马丽 · 抖音负责人</div>
-          <div class="wx-id">ma314227840</div>
-        </div>
-        <button class="wx-copy" onclick="copyWx(this,'ma314227840')">复制微信号</button>
-      </div>
-      <div class="wx-card">
-        <div class="wx-platform" style="background:#00a1d6;overflow:hidden;display:flex;align-items:center;justify-content:center"><span style="color:white;font-size:14px;font-weight:900">B</span></div>
-        <div class="wx-info">
-          <div class="wx-name">慧颖 · B站 / 视频号负责人</div>
-          <div class="wx-id">Goldfish-74</div>
-        </div>
-        <button class="wx-copy" onclick="copyWx(this,'Goldfish-74')">复制微信号</button>
-      </div>
-      <div class="wx-card">
-        <div class="wx-platform" style="background:#1a1a2e;overflow:hidden;display:flex;align-items:center;justify-content:center"><span style="color:#0066ff;font-size:9px;font-weight:900;letter-spacing:-0.5px">知乎</span></div>
-        <div class="wx-info">
-          <div class="wx-name">Yara · 知乎负责人</div>
-          <div class="wx-id">z15201126125</div>
-        </div>
-        <button class="wx-copy" onclick="copyWx(this,'z15201126125')">复制微信号</button>
-      </div>
+      <div class="wx-card"><div class="wx-platform" style="background:#1a1a2e;overflow:hidden"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Xiaohongshu_logo.svg/512px-Xiaohongshu_logo.svg.png" alt="小红书" style="width:100%;height:100%;object-fit:contain;padding:4px" onerror="this.parentNode.innerHTML='🍠'" /></div><div class="wx-info"><div class="wx-name">Sherry · 小红书负责人</div><div class="wx-id">nings102</div></div><button class="wx-copy" onclick="copyWx(this,'nings102')">复制微信号</button></div>
+      <div class="wx-card"><div class="wx-platform" style="background:#1a1a2e;overflow:hidden"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/TikTok_logo.svg/512px-TikTok_logo.svg.png" alt="抖音" style="width:100%;height:100%;object-fit:contain;padding:4px" onerror="this.parentNode.innerHTML='🎵'" /></div><div class="wx-info"><div class="wx-name">马丽 · 抖音负责人</div><div class="wx-id">ma314227840</div></div><button class="wx-copy" onclick="copyWx(this,'ma314227840')">复制微信号</button></div>
+      <div class="wx-card"><div class="wx-platform" style="background:#00a1d6;overflow:hidden;display:flex;align-items:center;justify-content:center"><span style="color:white;font-size:14px;font-weight:900">B</span></div><div class="wx-info"><div class="wx-name">慧颖 · B站 / 视频号负责人</div><div class="wx-id">Goldfish-74</div></div><button class="wx-copy" onclick="copyWx(this,'Goldfish-74')">复制微信号</button></div>
+      <div class="wx-card"><div class="wx-platform" style="background:#1a1a2e;overflow:hidden;display:flex;align-items:center;justify-content:center"><span style="color:#0066ff;font-size:9px;font-weight:900;letter-spacing:-0.5px">知乎</span></div><div class="wx-info"><div class="wx-name">Yara · 知乎负责人</div><div class="wx-id">z15201126125</div></div><button class="wx-copy" onclick="copyWx(this,'z15201126125')">复制微信号</button></div>
     </div>
   </div>
 </section>
@@ -1229,127 +1008,115 @@
   </div>
 </footer>
 
-<!-- ===== COLLAB MODAL ===== -->
+<!-- COLLAB MODAL -->
 <div class="modal-overlay" id="collabModal" onclick="closeModal('collabModal')">
   <div class="modal-box" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="closeModal('collabModal')">×</button>
     <div class="modal-title">🤝 我要恰这个饭</div>
     <div class="modal-sub">根据你主要创作平台，直接添加对应同事的微信，说明你的平台和粉丝规模，并发送你的账号链接，我们会尽快回复。</div>
-    <div class="wx-card">
-      <div class="wx-platform" style="background:#1a1a2e;overflow:hidden"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Xiaohongshu_logo.svg/512px-Xiaohongshu_logo.svg.png" alt="小红书" style="width:100%;height:100%;object-fit:contain;padding:4px" onerror="this.parentNode.innerHTML='🍠'" /></div>
-      <div class="wx-info"><div class="wx-name">Sherry · 小红书负责人</div><div class="wx-id">nings102</div></div>
-      <button class="wx-copy" onclick="copyWx(this,'nings102')">复制微信号</button>
-    </div>
-    <div class="wx-card">
-      <div class="wx-platform" style="background:#1a1a2e;overflow:hidden"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/TikTok_logo.svg/512px-TikTok_logo.svg.png" alt="抖音" style="width:100%;height:100%;object-fit:contain;padding:4px" onerror="this.parentNode.innerHTML='🎵'" /></div>
-      <div class="wx-info"><div class="wx-name">马丽 · 抖音负责人</div><div class="wx-id">ma314227840</div></div>
-      <button class="wx-copy" onclick="copyWx(this,'ma314227840')">复制微信号</button>
-    </div>
-    <div class="wx-card">
-      <div class="wx-platform" style="background:#00a1d6;overflow:hidden;display:flex;align-items:center;justify-content:center"><span style="color:white;font-size:14px;font-weight:900">B</span></div>
-      <div class="wx-info"><div class="wx-name">慧颖 · B站 / 视频号负责人</div><div class="wx-id">Goldfish-74</div></div>
-      <button class="wx-copy" onclick="copyWx(this,'Goldfish-74')">复制微信号</button>
-    </div>
-    <div class="wx-card">
-      <div class="wx-platform" style="background:#1a1a2e;overflow:hidden;display:flex;align-items:center;justify-content:center"><span style="color:#0066ff;font-size:9px;font-weight:900;letter-spacing:-0.5px">知乎</span></div>
-      <div class="wx-info"><div class="wx-name">Yara · 知乎负责人</div><div class="wx-id">z15201126125</div></div>
-      <button class="wx-copy" onclick="copyWx(this,'z15201126125')">复制微信号</button>
-    </div>
+    <div class="wx-card"><div class="wx-platform" style="background:#1a1a2e;overflow:hidden"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Xiaohongshu_logo.svg/512px-Xiaohongshu_logo.svg.png" alt="小红书" style="width:100%;height:100%;object-fit:contain;padding:4px" onerror="this.parentNode.innerHTML='🍠'" /></div><div class="wx-info"><div class="wx-name">Sherry · 小红书负责人</div><div class="wx-id">nings102</div></div><button class="wx-copy" onclick="copyWx(this,'nings102')">复制微信号</button></div>
+    <div class="wx-card"><div class="wx-platform" style="background:#1a1a2e;overflow:hidden"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/TikTok_logo.svg/512px-TikTok_logo.svg.png" alt="抖音" style="width:100%;height:100%;object-fit:contain;padding:4px" onerror="this.parentNode.innerHTML='🎵'" /></div><div class="wx-info"><div class="wx-name">马丽 · 抖音负责人</div><div class="wx-id">ma314227840</div></div><button class="wx-copy" onclick="copyWx(this,'ma314227840')">复制微信号</button></div>
+    <div class="wx-card"><div
+ class="wx-platform" style="background:#00a1d6;overflow:hidden;display:flex;align-items:center;justify-content:center"><span style="color:white;font-size:14px;font-weight:900">B</span></div><div class="wx-info"><div class="wx-name">慧颖 · B站 / 视频号负责人</div><div class="wx-id">Goldfish-74</div></div><button class="wx-copy" onclick="copyWx(this,'Goldfish-74')">复制微信号</button></div>
+    <div class="wx-card"><div class="wx-platform" style="background:#1a1a2e;overflow:hidden;display:flex;align-items:center;justify-content:center"><span style="color:#0066ff;font-size:9px;font-weight:900;letter-spacing:-0.5px">知乎</span></div><div class="wx-info"><div class="wx-name">Yara · 知乎负责人</div><div class="wx-id">z15201126125</div></div><button class="wx-copy" onclick="copyWx(this,'z15201126125')">复制微信号</button></div>
   </div>
 </div>
 
-<!-- ===== SHARE MODAL ===== -->
+<!-- SHARE MODAL -->
 <div class="modal-overlay" id="shareModal" onclick="closeModal('shareModal')">
   <div class="modal-box" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="closeModal('shareModal')">×</button>
-    <div class="modal-title">🔗 分享给KOL朋友</div>
-    <div class="modal-sub">把这个页面分享给你认识的跨境电商/出海运营类创作者，帮他们发现这个合作机会。</div>
-    <div class="share-grid">
-      <div class="share-item" onclick="shareToWechat()">
-        <span class="share-plat-icon">💬</span>
-        <span class="share-plat-label">微信 / 朋友圈</span>
-      </div>
-      <div class="share-item" onclick="shareToWeibo()">
-        <span class="share-plat-icon">🔴</span>
-        <span class="share-plat-label">微博</span>
-      </div>
-      <div class="share-item" onclick="copyLink()">
-        <span class="share-plat-icon">📋</span>
-        <span class="share-plat-label">复制链接</span>
-      </div>
+    <div class="modal-title">🔗 分享这个页面</div>
+    <div class="modal-sub">把这份合作参考素材分享给有需要的人。</div>
+    <div style="display:flex;align-items:center;gap:10px;padding:12px;background:var(--bg-panel);border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:16px">
+      <span style="font-size:12px;color:var(--cyan);font-family:'JetBrains Mono',monospace;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">https://it-kol.github.io/trade/</span>
+      <button onclick="copyUrl()" style="padding:5px 12px;border-radius:8px;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.25);font-size:12px;font-weight:700;color:var(--cyan);cursor:pointer;white-space:nowrap" id="copyUrlBtn">复制链接</button>
     </div>
-    <div id="copyLinkTip" style="display:none;margin-top:14px;padding:10px 14px;border-radius:8px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.22);font-size:13px;color:var(--green);text-align:center">✅ 链接已复制到剪贴板</div>
+    <div class="share-grid">
+      <div class="share-item" onclick="shareWeChat()"><span class="share-plat-icon">💬</span><span class="share-plat-label">微信</span></div>
+      <div class="share-item" onclick="shareWeibo()"><span class="share-plat-icon">🔴</span><span class="share-plat-label">微博</span></div>
+      <div class="share-item" onclick="shareTwitter()"><span class="share-plat-icon">🐦</span><span class="share-plat-label">Twitter/X</span></div>
+    </div>
   </div>
 </div>
 
 <script>
-  // Reveal on scroll
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Mobile nav
+  // NAV
   function openMobileNav() { document.getElementById('mobileNav').classList.add('open'); }
   function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); }
 
-  // Modal
+  // MODAL
   function openModal(id) { document.getElementById(id).classList.add('open'); }
   function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') { document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open')); } });
+  document.addEventListener('keydown', e => { if(e.key==='Escape') { closeModal('collabModal'); closeModal('shareModal'); } });
 
-  // Phase tabs
-  function switchPhase(idx) {
-    document.querySelectorAll('.phase-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
-    document.querySelectorAll('.phase-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
-    // re-trigger reveal for newly visible elements
-    document.querySelectorAll('#phase-' + idx + ' .reveal').forEach(el => {
-      el.classList.remove('visible');
-      setTimeout(() => observer.observe(el), 50);
-    });
-  }
-
-  // Install tabs
-  function switchInstall(idx) {
-    document.querySelectorAll('.install-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
-    document.querySelectorAll('.install-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
-  }
-
-  // Copy WeChat ID
+  // COPY WX
   function copyWx(btn, id) {
     navigator.clipboard.writeText(id).then(() => {
       btn.textContent = '已复制 ✓';
       btn.classList.add('copied');
       setTimeout(() => { btn.textContent = '复制微信号'; btn.classList.remove('copied'); }, 2000);
     }).catch(() => {
-      const ta = document.createElement('textarea');
-      ta.value = id; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+      const el = document.createElement('textarea');
+      el.value = id; document.body.appendChild(el); el.select();
+      document.execCommand('copy'); document.body.removeChild(el);
       btn.textContent = '已复制 ✓'; btn.classList.add('copied');
       setTimeout(() => { btn.textContent = '复制微信号'; btn.classList.remove('copied'); }, 2000);
     });
   }
 
-  // Share functions
-  function shareToWechat() {
-    copyLink();
-    alert('链接已复制，请打开微信粘贴分享！');
-  }
-  function shareToWeibo() {
-    const url = encodeURIComponent(window.location.href);
-    const title = encodeURIComponent('沉浸式翻译 × 跨境贸易/出海运营类KOL合作参考素材');
-    window.open('https://service.weibo.com/share/share.php?url=' + url + '&title=' + title, '_blank');
-  }
-  function copyLink() {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      const tip = document.getElementById('copyLinkTip');
-      if (tip) { tip.style.display = 'block'; setTimeout(() => { tip.style.display = 'none'; }, 3000); }
-    }).catch(() => {
-      const ta = document.createElement('textarea');
-      ta.value = window.location.href; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-      const tip = document.getElementById('copyLinkTip');
-      if (tip) { tip.style.display = 'block'; setTimeout(() => { tip.style.display = 'none'; }, 3000); }
+  // COPY URL
+  function copyUrl() {
+    const url = 'https://it-kol.github.io/trade/';
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = document.getElementById('copyUrlBtn');
+      btn.textContent = '已复制 ✓';
+      setTimeout(() => { btn.textContent = '复制链接'; }, 2000);
     });
   }
+
+  // SHARE
+  function shareWeChat() { copyUrl(); alert('链接已复制，请粘贴到微信分享'); }
+  function shareWeibo() { window.open('https://service.weibo.com/share/share.php?url=https://it-kol.github.io/trade/&title=沉浸式翻译×跨境贸易/出海运营类KOL合作参考素材', '_blank'); }
+  function shareTwitter() { window.open('https://twitter.com/intent/tweet?url=https://it-kol.github.io/trade/&text=沉浸式翻译×跨境贸易/出海运营类KOL合作参考素材', '_blank'); }
+
+  // TRACK SWITCH
+  function switchTrack(track) {
+    document.getElementById('track-trade').classList.remove('active');
+    document.getElementById('track-ops').classList.remove('active');
+    document.getElementById('track-trade').classList.add(track === 'trade' ? 'active' : '');
+    document.getElementById('track-ops').classList.add(track === 'ops' ? 'active' : '');
+
+    const tradeBtn = document.getElementById('tradeBtnMain');
+    const opsBtn = document.getElementById('opsBtnMain');
+    tradeBtn.className = 'track-btn' + (track === 'trade' ? ' active-trade' : '');
+    opsBtn.className = 'track-btn' + (track === 'ops' ? ' active-ops' : '');
+  }
+
+  // PHASE SWITCH
+  function switchPhase(track, idx) {
+    const panels = document.querySelectorAll('#track-' + track + ' .phase-panel');
+    const tabs = document.querySelectorAll('#' + track + 'PhaseTabs .phase-tab');
+    const activeClass = 'active-' + track;
+    panels.forEach((p, i) => p.classList.toggle('active', i === idx));
+    tabs.forEach((t, i) => {
+      t.classList.remove('active-trade', 'active-ops');
+      if (i === idx) t.classList.add(activeClass);
+    });
+  }
+
+  // INSTALL TABS
+  function switchInstall(idx) {
+    document.querySelectorAll('.install-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
+    document.querySelectorAll('.install-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
+  }
+
+  // REVEAL ON SCROLL
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  revealEls.forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
